@@ -1,38 +1,39 @@
 import React from 'react';
+import styles from './Task.module.css';
 
 const Task: React.FC = () => {
   return (
-    <article className="card">
+    <article className={styles.card}>
       <div className="card__form">
-        <div className="card__inner">
-          <div className="card__control">
-            <button type="button" className="card__btn card__btn--edit">
+        <div className={styles.cardInner}>
+          <div className={styles.cardControl}>
+            <button type="button" className={`${styles.cardBtn} ${styles.cardBtnEdit}`}>
               edit
             </button>
-            <button type="button" className="card__btn card__btn--archive">
+            <button type="button" className={`${styles.cardBtn} ${styles.cardBtnArchive}`}>
               archive
             </button>
-            <button type="button" className="card__btn card__btn--favorites card__btn--disabled">
+            <button type="button" className={styles.cardBtn}>
               favorites
             </button>
           </div>
 
-          <div className="card__color-bar">
+          <div className={styles.cardColorBar}>
             <svg className="card__color-bar-wave" width="100%" height="10">
               <use xlinkHref="#wave"></use>
             </svg>
           </div>
 
-          <div className="card__textarea-wrap">
-            <p className="card__text">Example task which marked as favorite.</p>
+          <div className={styles.textareaWrap}>
+            <p className={styles.text}>Example task which marked as favorite.</p>
           </div>
 
-          <div className="card__settings">
-            <div className="card__details">
-              <div className="card__dates">
-                <div className="card__date-deadline">
-                  <p className="card__input-deadline-wrap">
-                    <span className="card__date">23 September</span>
+          <div className={styles.settings}>
+            <div className={styles.details}>
+              <div className={styles.dates}>
+                <div className={styles.dateDeadline}>
+                  <p className={styles.deadlineWrap}>
+                    <span className={styles.date}>23 September</span>
                   </p>
                 </div>
               </div>
