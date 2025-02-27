@@ -1,0 +1,12 @@
+.boardTasks {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  min-height: 500px;
+  margin-right: -40px;
+}
+
+.boardNoTasks {
+  text-align: center;
+  text-transform: uppercase;
+}
