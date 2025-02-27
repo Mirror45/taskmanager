@@ -1,12 +1,12 @@
 import React from 'react';
 import TaskList from '../TaskList/TaskList';
 import styles from './TaskBoard.module.css';
-import TaskFilter from '../TaskFilter/TaskFilter';
+import TaskSort from '../TaskSort/TaskSort';
 
 const TaskBoard: React.FC = () => {
   return (
     <div className={styles.taskBoard}>
-      <TaskFilter />
+      <TaskSort />
       <TaskList />
     </div>
   );

@@ -1,8 +1,8 @@
-.filterList {
+.sortList {
   margin-bottom: 24px;
 }
 
-.boardFilter {
+.boardSort {
   display: inline-block;
   margin-right: 24px;
   outline: none;
@@ -10,11 +10,11 @@
   color: #000;
 }
 
-.boardFilter:hover,
-.boardFilter:focus {
+.boardSort:hover,
+.boardSort:focus {
   opacity: 0.7;
 }
 
-.boardFilterActive {
+.boardSortActive {
   font-weight: bold;
 }
