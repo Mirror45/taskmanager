@@ -3,19 +3,18 @@
 }
 
 .boardFilter {
-    display: inline-block;
-    margin-right: 24px;
-    outline: none;
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .boardFilter:hover,
-  .boardFilter:focus {
-    opacity: 0.7;
-  }
-  
-  .boardFilterActive {
-    font-weight: bold;
-  }
-  
+  display: inline-block;
+  margin-right: 24px;
+  outline: none;
+  text-decoration: none;
+  color: #000;
+}
+
+.boardFilter:hover,
+.boardFilter:focus {
+  opacity: 0.7;
+}
+
+.boardFilterActive {
+  font-weight: bold;
+}
