@@ -3,11 +3,11 @@ import styles from './MainFilter.module.css';
 
 const MainFilter: React.FC = () => {
   return (
-    <section className={`${styles.mainFilter} ${styles.filter} ${styles.container}`}>
+    <section className={`${styles.mainFilter} ${styles.filter}`}>
       <input
         type="radio"
         id="filter__all"
-        className={`${styles.filterInput} ${styles.visuallyHidden}`}
+        className={`${styles.filterInput} visually-hidden`}
         name="filter"
         defaultChecked
       />
@@ -18,7 +18,7 @@ const MainFilter: React.FC = () => {
       <input
         type="radio"
         id="filter__overdue"
-        className={`${styles.filterInput} ${styles.visuallyHidden}`}
+        className={`${styles.filterInput} visually-hidden`}
         name="filter"
         disabled
       />
@@ -29,7 +29,7 @@ const MainFilter: React.FC = () => {
       <input
         type="radio"
         id="filter__today"
-        className={`${styles.filterInput} ${styles.visuallyHidden}`}
+        className={`${styles.filterInput} visually-hidden`}
         name="filter"
         disabled
       />
@@ -40,7 +40,7 @@ const MainFilter: React.FC = () => {
       <input
         type="radio"
         id="filter__favorites"
-        className={`${styles.filterInput} ${styles.visuallyHidden}`}
+        className={`${styles.filterInput} visually-hidden`}
         name="filter"
       />
       <label htmlFor="filter__favorites" className={styles.filterLabel}>
@@ -50,7 +50,7 @@ const MainFilter: React.FC = () => {
       <input
         type="radio"
         id="filter__repeating"
-        className={`${styles.filterInput} ${styles.visuallyHidden}`}
+        className={`${styles.filterInput} visually-hidden`}
         name="filter"
       />
       <label htmlFor="filter__repeating" className={styles.filterLabel}>
@@ -60,7 +60,7 @@ const MainFilter: React.FC = () => {
       <input
         type="radio"
         id="filter__archive"
-        className={`${styles.filterInput} ${styles.visuallyHidden}`}
+        className={`${styles.filterInput} visually-hidden`}
         name="filter"
       />
       <label htmlFor="filter__archive" className={styles.filterLabel}>

@@ -3,14 +3,14 @@ import styles from './TaskControl.module.css';
 
 const TaskControl: React.FC = () => {
   return (
-    <section className={`${styles.controlContainer} ${styles.mainControl} ${styles.control}`}>
+    <section className={`${styles.mainControl} ${styles.control}`}>
       <h1 className={styles.controlTitle}>TASKMANAGER</h1>
       <section className={styles.controlBtnWrap}>
         <input
           type="radio"
           name="control"
           id="controlNewTask"
-          className={`${styles.controlInput} ${styles.visuallyHidden}`}
+          className={`${styles.controlInput} visually-hidden`}
         />
         <label
           htmlFor="controlNewTask"
@@ -23,7 +23,7 @@ const TaskControl: React.FC = () => {
           type="radio"
           name="control"
           id="controlTask"
-          className={`${styles.controlInput} ${styles.visuallyHidden}`}
+          className={`${styles.controlInput} visually-hidden`}
         />
         <label htmlFor="controlTask" className={styles.controlLabel}>
           TASKS
@@ -33,7 +33,7 @@ const TaskControl: React.FC = () => {
           type="radio"
           name="control"
           id="controlStatistic"
-          className={`${styles.controlInput} ${styles.visuallyHidden}`}
+          className={`${styles.controlInput} visually-hidden`}
           defaultChecked
         />
         <label htmlFor="controlStatistic" className={styles.controlLabel}>

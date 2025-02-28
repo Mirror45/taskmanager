@@ -5,12 +5,14 @@ import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 
 const TaskList: React.FC = () => {
   return (
-    <div className={styles.boardTasks}>
-      {Array.from({ length: 8 }).map((_, index) => (
-        <Task key={index} />
-      ))}
+    <>
+      <div className={styles.boardTasks}>
+        {Array.from({ length: 8 }).map((_, index) => (
+          <Task key={index} />
+        ))}
+      </div>
       <LoadMoreButton />
-    </div>
+    </>
   );
 };
 

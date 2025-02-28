@@ -1,16 +1,12 @@
 import React from 'react';
-import TaskBoard from '../TaskBoard/TaskBoard';
-import MainFilter from '../MainFilter/MainFilter';
-import TaskControl from '../TaskControl/TaskControl';
+import MainContent from '../MainContent/MainContent';
+import styles from './App.module.css';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Task Manager</h1>
-      <TaskControl />
-      <MainFilter />
-      <TaskBoard />
-    </div>
+    <main className={`${styles.main} ${styles.container}`}>
+      <MainContent />
+    </main>
   );
 };
 
