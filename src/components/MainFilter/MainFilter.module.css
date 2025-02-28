@@ -1,0 +1,49 @@
+.container {
+  width: 960px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.visuallyHidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.mainFilter {
+  margin-bottom: 29px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterLabel {
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.filterLabel:hover {
+  opacity: 0.7;
+  transition: opacity 0.2s ease-out;
+}
+
+.filterInput:not(:disabled):checked + .filterLabel {
+  text-shadow: 1px 0 0 #000000;
+}
+
+.filterInput:not(:disabled):checked + .filterLabel:hover {
+  text-shadow: 1px 0 0 #000000;
+  opacity: 1;
+}
+
+.filterInput:disabled + .filterLabel {
+  color: #e7e3e3;
+}
