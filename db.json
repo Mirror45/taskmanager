@@ -1,0 +1,227 @@
+{
+    "tasks": [
+      {
+        "id": "1",
+        "color": "purple",
+        "description": "exercise",
+        "due_date": "2025-03-13T02:51:38.713174",
+        "is_archived": true,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": false,
+          "tu": false,
+          "we": false,
+          "th": true,
+          "fr": false,
+          "sa": false,
+          "su": false
+        }
+      },
+      {
+        "id": "2",
+        "color": "red",
+        "description": "find money for travel",
+        "due_date": "2025-03-25T02:51:38.713207",
+        "is_archived": true,
+        "is_favorite": true,
+        "repeating_days": {
+          "mo": true,
+          "tu": false,
+          "we": false,
+          "th": false,
+          "fr": false,
+          "sa": false,
+          "su": false
+        }
+      },
+      {
+        "id": "3",
+        "color": "purple",
+        "description": "pay bills",
+        "due_date": "2025-03-24T02:51:38.713229",
+        "is_archived": false,
+        "is_favorite": true,
+        "repeating_days": {
+          "mo": false,
+          "tu": true,
+          "we": false,
+          "th": false,
+          "fr": false,
+          "sa": false,
+          "su": true
+        }
+      },
+      {
+        "id": "4",
+        "color": "purple",
+        "description": "finish project",
+        "due_date": "2025-03-11T02:51:38.713247",
+        "is_archived": false,
+        "is_favorite": true,
+        "repeating_days": {
+          "mo": false,
+          "tu": false,
+          "we": false,
+          "th": true,
+          "fr": true,
+          "sa": true,
+          "su": true
+        }
+      },
+      {
+        "id": "5",
+        "color": "blue",
+        "description": "read a book",
+        "due_date": "2025-03-21T02:51:38.713265",
+        "is_archived": true,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": true,
+          "tu": false,
+          "we": true,
+          "th": true,
+          "fr": true,
+          "sa": false,
+          "su": true
+        }
+      },
+      {
+        "id": "6",
+        "color": "purple",
+        "description": "buy groceries",
+        "due_date": "2025-03-31T02:52:11.792095",
+        "is_archived": false,
+        "is_favorite": true,
+        "repeating_days": {
+          "mo": false,
+          "tu": true,
+          "we": true,
+          "th": true,
+          "fr": false,
+          "sa": true,
+          "su": false
+        }
+      },
+      {
+        "id": "7",
+        "color": "green",
+        "description": "buy groceries",
+        "due_date": "2025-03-27T02:52:11.792136",
+        "is_archived": false,
+        "is_favorite": true,
+        "repeating_days": {
+          "mo": false,
+          "tu": true,
+          "we": true,
+          "th": false,
+          "fr": false,
+          "sa": true,
+          "su": false
+        }
+      },
+      {
+        "id": "8",
+        "color": "red",
+        "description": "read a book",
+        "due_date": "2025-03-15T02:52:11.792160",
+        "is_archived": false,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": true,
+          "tu": true,
+          "we": true,
+          "th": false,
+          "fr": true,
+          "sa": false,
+          "su": false
+        }
+      },
+      {
+        "id": "9",
+        "color": "yellow",
+        "description": "buy groceries",
+        "due_date": "2025-03-22T02:52:11.792178",
+        "is_archived": false,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": true,
+          "tu": false,
+          "we": false,
+          "th": true,
+          "fr": true,
+          "sa": true,
+          "su": true
+        }
+      },
+      {
+        "id": "10",
+        "color": "green",
+        "description": "pay bills",
+        "due_date": "2025-03-21T02:52:11.792189",
+        "is_archived": true,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": true,
+          "tu": false,
+          "we": false,
+          "th": true,
+          "fr": true,
+          "sa": false,
+          "su": true
+        }
+      },
+      {
+        "id": "11",
+        "color": "blue",
+        "description": "pay bills",
+        "due_date": "2025-03-10T02:52:11.792199",
+        "is_archived": true,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": true,
+          "tu": true,
+          "we": true,
+          "th": false,
+          "fr": true,
+          "sa": false,
+          "su": false
+        }
+      },
+      {
+        "id": "12",
+        "color": "green",
+        "description": "buy groceries",
+        "due_date": "2025-03-31T02:52:11.792210",
+        "is_archived": true,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": false,
+          "tu": false,
+          "we": false,
+          "th": false,
+          "fr": true,
+          "sa": true,
+          "su": true
+        }
+      },
+      {
+        "id": "13",
+        "color": "orange",
+        "description": "find money for travel",
+        "due_date": "2025-04-01T02:52:11.792220",
+        "is_archived": false,
+        "is_favorite": false,
+        "repeating_days": {
+          "mo": false,
+          "tu": true,
+          "we": true,
+          "th": false,
+          "fr": true,
+          "sa": true,
+          "su": false
+        }
+      }
+    ]
+    
+  }
+  
