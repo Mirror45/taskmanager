@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './Task.module.css';
+import styles from './TaskCard.module.css';
+import { TaskCardProps } from '../../types/task-card-props';
 
-const Task: React.FC = () => {
+const Task: React.FC<TaskCardProps> = ({ task }) => {
   return (
     <article className={styles.card}>
       <div className="card__form">
@@ -25,7 +26,7 @@ const Task: React.FC = () => {
           </div>
 
           <div className={styles.textareaWrap}>
-            <p className={styles.text}>Example task which marked as favorite.</p>
+            <p className={styles.text}>{task.description}</p>
           </div>
 
           <div className={styles.settings}>
