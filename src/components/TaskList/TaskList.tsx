@@ -4,37 +4,18 @@ import TaskCard from '../Task/TaskCard';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 import { RootState } from '../../store/store';
 import { useAppSelector } from '../../store/hooks';
-import { FilterType } from '../../types/filter';
-import { TaskType } from '../../types/task-types';
 import { useTasks } from '../../hooks/useTasks';
 import useSortedTasks from '../../hooks/useSortedTasks';
-
-const filterTasks = (tasks: TaskType[], activeFilter: FilterType) => {
-  return tasks.filter((task) => {
-    if (activeFilter === FilterType.All) return !task.is_archived;
-    if (activeFilter === FilterType.Overdue)
-      return new Date(task.due_date) < new Date() && !task.is_archived;
-    if (activeFilter === FilterType.Today)
-      return (
-        new Date(task.due_date).toDateString() === new Date().toDateString() && !task.is_archived
-      );
-    if (activeFilter === FilterType.Favorites) return task.is_favorite && !task.is_archived;
-    if (activeFilter === FilterType.Repeating)
-      return Object.values(task.repeating_days).includes(true) && !task.is_archived;
-    if (activeFilter === FilterType.Archive) return task.is_archived;
-    return true;
-  });
-};
+import useFilteredTasks from '../../hooks/useFilteredTasks';
 
 const TaskList: React.FC = () => {
   const { tasks, loading, error } = useTasks();
-  const activeFilter = useAppSelector((state: RootState) => state.filter.activeFilter);
   const [visibleCount, setVisibleCount] = useState(8);
 
   const sortOrder = useAppSelector((state: RootState) => state.sort.sortOrder);
   const sortedTasks = useSortedTasks(tasks, sortOrder);
 
-  const filteredTasks = filterTasks(sortedTasks, activeFilter);
+  const filteredTasks = useFilteredTasks(sortedTasks);
   const visibleTasks = filteredTasks.slice(0, visibleCount);
   const hasMoreTasks = visibleCount < filteredTasks.length;
 
