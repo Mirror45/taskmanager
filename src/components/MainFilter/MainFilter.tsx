@@ -1,71 +1,42 @@
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setFilter } from '../../store/slices/filtersSlice';
+import { FilterType } from '../../types/filter';
+import { useTaskCounts } from '../../hooks/useTaskCounts';
 import styles from './MainFilter.module.css';
 
+const filters = [
+  { type: FilterType.All, label: 'All' },
+  { type: FilterType.Overdue, label: 'Overdue' },
+  { type: FilterType.Today, label: 'Today' },
+  { type: FilterType.Favorites, label: 'Favorites' },
+  { type: FilterType.Repeating, label: 'Repeating' },
+  { type: FilterType.Archive, label: 'Archive' },
+];
+
 const MainFilter: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const activeFilter = useAppSelector((state) => state.filter.activeFilter);
+  const taskCounts = useTaskCounts();
+
   return (
     <section className={`${styles.mainFilter} ${styles.filter}`}>
-      <input
-        type="radio"
-        id="filter__all"
-        className={`${styles.filterInput} visually-hidden`}
-        name="filter"
-        defaultChecked
-      />
-      <label htmlFor="filter__all" className={styles.filterLabel}>
-        All <span className={styles.filterAllCount}>13</span>
-      </label>
-
-      <input
-        type="radio"
-        id="filter__overdue"
-        className={`${styles.filterInput} visually-hidden`}
-        name="filter"
-        disabled
-      />
-      <label htmlFor="filter__overdue" className={styles.filterLabel}>
-        Overdue <span className={styles.filterOverdueCount}>0</span>
-      </label>
-
-      <input
-        type="radio"
-        id="filter__today"
-        className={`${styles.filterInput} visually-hidden`}
-        name="filter"
-        disabled
-      />
-      <label htmlFor="filter__today" className={styles.filterLabel}>
-        Today <span className={styles.filterTodayCount}>0</span>
-      </label>
-
-      <input
-        type="radio"
-        id="filter__favorites"
-        className={`${styles.filterInput} visually-hidden`}
-        name="filter"
-      />
-      <label htmlFor="filter__favorites" className={styles.filterLabel}>
-        Favorites <span className={styles.filterFavoritesCount}>1</span>
-      </label>
-
-      <input
-        type="radio"
-        id="filter__repeating"
-        className={`${styles.filterInput} visually-hidden`}
-        name="filter"
-      />
-      <label htmlFor="filter__repeating" className={styles.filterLabel}>
-        Repeating <span className={styles.filterRepeatingCount}>1</span>
-      </label>
-
-      <input
-        type="radio"
-        id="filter__archive"
-        className={`${styles.filterInput} visually-hidden`}
-        name="filter"
-      />
-      <label htmlFor="filter__archive" className={styles.filterLabel}>
-        Archive <span className={styles.filterArchiveCount}>115</span>
-      </label>
+      {filters.map(({ type, label }) => (
+        <div key={type} className={styles.filterItem}>
+          <input
+            type="radio"
+            id={`filter__${type}`}
+            className={`${styles.filterInput} visually-hidden`}
+            name="filter"
+            checked={activeFilter === type}
+            onChange={() => dispatch(setFilter(type))}
+            disabled={taskCounts[type] === 0}
+          />
+          <label htmlFor={`filter__${type}`} className={styles.filterLabel}>
+            {label} <span className={styles.filterCount}>{taskCounts[type]}</span>
+          </label>
+        </div>
+      ))}
     </section>
   );
 };
