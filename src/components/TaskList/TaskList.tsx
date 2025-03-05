@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import styles from './TaskList.module.css';
 import TaskCard from '../Task/TaskCard';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
-import { useTasks } from '../../hooks/useTasks';
-import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { useAppSelector } from '../../store/hooks';
 import { FilterType } from '../../types/filter';
 import { TaskType } from '../../types/task-types';
+import { useTasks } from '../../hooks/useTasks';
+import useSortedTasks from '../../hooks/useSortedTasks';
 
 const filterTasks = (tasks: TaskType[], activeFilter: FilterType) => {
   return tasks.filter((task) => {
@@ -27,10 +28,13 @@ const filterTasks = (tasks: TaskType[], activeFilter: FilterType) => {
 
 const TaskList: React.FC = () => {
   const { tasks, loading, error } = useTasks();
-  const activeFilter = useSelector((state: RootState) => state.filter.activeFilter);
+  const activeFilter = useAppSelector((state: RootState) => state.filter.activeFilter);
   const [visibleCount, setVisibleCount] = useState(8);
 
-  const filteredTasks = filterTasks(tasks, activeFilter);
+  const sortOrder = useAppSelector((state: RootState) => state.sort.sortOrder);
+  const sortedTasks = useSortedTasks(tasks, sortOrder);
+
+  const filteredTasks = filterTasks(sortedTasks, activeFilter);
   const visibleTasks = filteredTasks.slice(0, visibleCount);
   const hasMoreTasks = visibleCount < filteredTasks.length;
 
