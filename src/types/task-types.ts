@@ -9,11 +9,11 @@ export type RepeatingDays = {
 };
 
 export type TaskType = {
-  id: string; // Идентификатор задачи
-  color: string; // Цвет задачи
-  description: string; // Описание задачи
-  due_date: string; // Дата и время выполнения задачи
-  is_archived: boolean; // Флаг архивированности
-  is_favorite: boolean; // Флаг избранности
-  repeating_days: RepeatingDays; // Дни недели, когда задача повторяется
+  id: string;
+  color: string;
+  description: string;
+  due_date: string;
+  is_archived: boolean;
+  is_favorite: boolean;
+  repeating_days: RepeatingDays;
 };
