@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './TaskList.module.css';
 import TaskCard from '../Task/TaskCard';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
@@ -7,19 +7,16 @@ import { useAppSelector } from '../../store/hooks';
 import { useTasks } from '../../hooks/useTasks';
 import useSortedTasks from '../../hooks/useSortedTasks';
 import useFilteredTasks from '../../hooks/useFilteredTasks';
+import usePagination from '../../hooks/usePagination';
 
 const TaskList: React.FC = () => {
   const { tasks, loading, error } = useTasks();
-  const [visibleCount, setVisibleCount] = useState(8);
 
   const sortOrder = useAppSelector((state: RootState) => state.sort.sortOrder);
   const sortedTasks = useSortedTasks(tasks, sortOrder);
 
   const filteredTasks = useFilteredTasks(sortedTasks);
-  const visibleTasks = filteredTasks.slice(0, visibleCount);
-  const hasMoreTasks = visibleCount < filteredTasks.length;
-
-  const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
+  const { visibleTasks, hasMoreTasks, handleLoadMore } = usePagination(filteredTasks, 8);
 
   if (loading) return <p>Loading tasks...</p>;
   if (error) return <p>Error: {error}</p>;
