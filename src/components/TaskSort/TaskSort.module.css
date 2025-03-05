@@ -8,6 +8,9 @@
   outline: none;
   text-decoration: none;
   color: #000;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .boardSort:hover,

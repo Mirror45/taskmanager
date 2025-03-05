@@ -1,18 +1,43 @@
 import React from 'react';
+import { RootState } from '../../store/store';
+import { setSortOrder } from '../../store/slices/sortSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import styles from './TaskSort.module.css';
+import useResetSortOnFilterChange from '../../hooks/useResetSortOnFilterChange';
 
 const TaskSort: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const sortOrder = useAppSelector((state: RootState) => state.sort.sortOrder);
+
+  useResetSortOnFilterChange();
+
+  const handleSortChange = (order: 'default' | 'date-up' | 'date-down') => {
+    dispatch(setSortOrder(order));
+  };
+
   return (
     <div className={styles.sortList}>
-      <a href="/tasks?sort=default" className={styles.boardSort}>
+      <button
+        onClick={() => handleSortChange('default')}
+        className={`${styles.boardSort} ${sortOrder === 'default' ? styles.boardSortActive : ''}`}
+        disabled={sortOrder === 'default'}
+      >
         SORT BY DEFAULT
-      </a>
-      <a href="/tasks?sort=date-up" className={styles.boardSort}>
+      </button>
+      <button
+        onClick={() => handleSortChange('date-up')}
+        className={`${styles.boardSort} ${sortOrder === 'date-up' ? styles.boardSortActive : ''}`}
+        disabled={sortOrder === 'date-up'}
+      >
         SORT BY DATE up
-      </a>
-      <a href="/tasks?sort=date-down" className={styles.boardSort}>
+      </button>
+      <button
+        onClick={() => handleSortChange('date-down')}
+        className={`${styles.boardSort} ${sortOrder === 'date-down' ? styles.boardSortActive : ''}`}
+        disabled={sortOrder === 'date-down'}
+      >
         SORT BY DATE down
-      </a>
+      </button>
     </div>
   );
 };
