@@ -1,8 +1,20 @@
 import React from 'react';
 import styles from './TaskCard.module.css';
 import { TaskCardProps } from '../../types/task-card-props';
+import { useAppDispatch } from '../../store/hooks';
+import { toggleArchiveTask, toggleFavoriteTask } from '../../store/thunks/task-thunks';
 
 const Task: React.FC<TaskCardProps> = ({ task }) => {
+  const dispatch = useAppDispatch();
+
+  const handleFavoriteToggle = () => {
+    dispatch(toggleFavoriteTask(task.id));
+  };
+
+  const handleArchiveToggle = () => {
+    dispatch(toggleArchiveTask(task.id));
+  };
+
   const dueDate = new Date(task.due_date);
   const currentDate = new Date();
   const isOverdue = dueDate < currentDate;
@@ -26,11 +38,19 @@ const Task: React.FC<TaskCardProps> = ({ task }) => {
             <button type="button" className={`${styles.cardBtn} ${styles.cardBtnEdit}`}>
               edit
             </button>
-            <button type="button" className={`${styles.cardBtn} ${styles.cardBtnArchive}`}>
-              archive
+            <button
+              type="button"
+              className={`${styles.cardBtn} ${styles.cardBtnArchive} ${task.is_favorite ? styles.cardBtnDisabled : ''}`}
+              onClick={handleFavoriteToggle}
+            >
+              {task.is_favorite ? 'Unfavorite' : 'Favorite'}
             </button>
-            <button type="button" className={styles.cardBtn}>
-              favorites
+            <button
+              type="button"
+              className={`${styles.cardBtn} ${task.is_archived ? styles.cardBtnDisabled : ''}`}
+              onClick={handleArchiveToggle}
+            >
+              {task.is_archived ? 'Unarchive' : 'Archive'}
             </button>
           </div>
 

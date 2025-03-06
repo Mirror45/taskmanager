@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialTaskState } from '../../types/task-state';
-import { addTask, editTask, fetchTasks, removeTask } from '../thunks/task-thunks';
+import {
+  addTask,
+  editTask,
+  fetchTasks,
+  removeTask,
+  toggleArchiveTask,
+  toggleFavoriteTask,
+} from '../thunks/task-thunks';
 import {
   handlePending,
   handleRejected,
@@ -8,7 +15,9 @@ import {
   handleAddFulfilled,
   handleEditFulfilled,
   handleRemoveFulfilled,
-} from '../stateHandlers/taskHandlers'; // Импортируем вспомогательные функции
+  handleToggleFavoriteFulfilled,
+  handleToggleArchiveFulfilled,
+} from '../stateHandlers/taskHandlers';
 
 const taskSlice = createSlice({
   name: 'tasks',
@@ -34,7 +43,15 @@ const taskSlice = createSlice({
       // Remove task
       .addCase(removeTask.pending, handlePending)
       .addCase(removeTask.fulfilled, handleRemoveFulfilled)
-      .addCase(removeTask.rejected, handleRejected);
+      .addCase(removeTask.rejected, handleRejected)
+
+      // Toggle favorite
+      .addCase(toggleFavoriteTask.fulfilled, handleToggleFavoriteFulfilled)
+      .addCase(toggleFavoriteTask.rejected, handleRejected)
+
+      // Toggle archive
+      .addCase(toggleArchiveTask.fulfilled, handleToggleArchiveFulfilled)
+      .addCase(toggleArchiveTask.rejected, handleRejected);
   },
 });
 
