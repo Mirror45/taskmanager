@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { TaskType } from '../../types/task-types';
 import { getTasks, createTask, updateTask, deleteTask } from '../../api/api';
+import { RootState } from '../store';
 
 export const fetchTasks = createAsyncThunk<TaskType[], void, { rejectValue: string }>(
   'tasks/fetchTasks',
@@ -47,6 +48,42 @@ export const removeTask = createAsyncThunk<string, string, { rejectValue: string
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue('Failed to delete task');
+    }
+  },
+);
+
+export const toggleFavoriteTask = createAsyncThunk<TaskType, string, { rejectValue: string }>(
+  'tasks/toggleFavorite',
+  async (taskId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState() as RootState;
+      const task = state.tasks.tasks.find((task) => task.id === taskId);
+      if (!task) throw new Error('Task not found');
+
+      const updatedTask = { ...task, is_favorite: !task.is_favorite };
+
+      const response = await updateTask(taskId, updatedTask);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Failed to toggle favorite status');
+    }
+  },
+);
+
+export const toggleArchiveTask = createAsyncThunk<TaskType, string, { rejectValue: string }>(
+  'tasks/toggleArchive',
+  async (taskId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState() as RootState;
+      const task = state.tasks.tasks.find((task) => task.id === taskId);
+      if (!task) throw new Error('Task not found');
+
+      const updatedTask = { ...task, is_archived: !task.is_archived };
+
+      const response = await updateTask(taskId, updatedTask);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Failed to toggle archive status');
     }
   },
 );

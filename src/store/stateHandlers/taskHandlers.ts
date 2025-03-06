@@ -46,3 +46,21 @@ export const handleRemoveFulfilled = (
   state.loading = false;
   state.tasks = state.tasks.filter((task) => task.id !== action.payload);
 };
+
+export const handleToggleFavoriteFulfilled = (
+  state: typeof initialTaskState,
+  action: PayloadAction<TaskType>,
+) => {
+  state.tasks = state.tasks.map((task) =>
+    task.id === action.payload.id ? { ...task, is_favorite: action.payload.is_favorite } : task,
+  );
+};
+
+export const handleToggleArchiveFulfilled = (
+  state: typeof initialTaskState,
+  action: PayloadAction<TaskType>,
+) => {
+  state.tasks = state.tasks.map((task) =>
+    task.id === action.payload.id ? { ...task, is_archived: action.payload.is_archived } : task,
+  );
+};
