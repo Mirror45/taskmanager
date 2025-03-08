@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
 import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
+import TaskTextarea from '../TaskTextarea/TaskTextarea';
 
 const AddNewTask: React.FC = () => {
+  const [text, setText] = useState('');
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState('black');
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value);
 
   const handleDayChange = (day: string) => {
     setSelectedDays((prev) =>
@@ -26,16 +30,7 @@ const AddNewTask: React.FC = () => {
             </svg>
           </div>
 
-          <div className="card__textarea-wrap">
-            <label aria-label="Task text">
-              <textarea
-                className="card__text"
-                placeholder="Start typing your text here..."
-                name="text"
-                defaultValue="This is example of new task. You can set date and choose repeating days and color."
-              />
-            </label>
-          </div>
+          <TaskTextarea value={text} onChange={handleTextChange} />
 
           <div className="card__settings">
             <div className="card__details">
