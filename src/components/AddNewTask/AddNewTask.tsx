@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
 import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
 import TaskTextarea from '../TaskTextarea/TaskTextarea';
+import TaskDate from '../TaskDate/TaskDate';
 
 const AddNewTask: React.FC = () => {
   const [text, setText] = useState('');
@@ -35,25 +36,7 @@ const AddNewTask: React.FC = () => {
           <div className="card__settings">
             <div className="card__details">
               <div className="card__dates">
-                <button className="card__date-deadline-toggle" type="button">
-                  date: <span className="card__date-status">no</span>
-                </button>
-
-                <fieldset className="card__date-deadline" disabled>
-                  <label className="card__input-deadline-wrap" aria-label="Deadline date">
-                    <input
-                      className="card__date"
-                      type="text"
-                      placeholder="23 September"
-                      name="date"
-                    />
-                  </label>
-                </fieldset>
-
-                <button className="card__repeat-toggle" type="button">
-                  repeat: <span className="card__repeat-status">no</span>
-                </button>
-
+                <TaskDate />
                 <TaskRepeatDays selectedDays={selectedDays} onDayChange={handleDayChange} />
               </div>
             </div>
