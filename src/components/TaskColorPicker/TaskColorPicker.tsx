@@ -1,31 +1,33 @@
 import React from 'react';
-
-interface TaskColorPickerProps {
-  selectedColor: string;
-  // eslint-disable-next-line no-unused-vars
-  onColorChange: (color: string) => void;
-}
+import styles from './TaskColorPicker.module.css';
+import { COLORS } from '../../constants';
+import { TaskColorPickerProps } from '../../types/task-color-picker-props';
 
 const TaskColorPicker: React.FC<TaskColorPickerProps> = ({ selectedColor, onColorChange }) => {
   return (
-    <div className="card__colors-inner">
-      <h3 className="card__colors-title">Color</h3>
-      <div className="card__colors-wrap">
-        {['black', 'yellow', 'blue', 'green', 'pink'].map((color) => (
-          <React.Fragment key={color}>
+    <div className={styles.colorsInner}>
+      <h3 className={styles.colorsTitle}>Color</h3>
+      <div className={styles.colorsWrap}>
+        {COLORS.map((color) => (
+          <>
             <input
+              key={color}
               type="radio"
               id={`color-${color}`}
-              className={`card__color-input card__color-input--${color} visually-hidden`}
+              className={`${styles.colorInput} visually-hidden`}
               name="color"
               value={color}
               checked={selectedColor === color}
               onChange={() => onColorChange(color)}
+              style={{ color }}
             />
-            <label className={`card__color card__color--${color}`} htmlFor={`color-${color}`}>
+            <label
+              className={`${styles.color} ${styles[`color${color.charAt(0).toUpperCase() + color.slice(1)}`]}`}
+              htmlFor={`color-${color}`}
+            >
               {color}
             </label>
-          </React.Fragment>
+          </>
         ))}
       </div>
     </div>
