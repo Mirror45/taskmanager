@@ -3,6 +3,8 @@ import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
 import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
 import TaskTextarea from '../TaskTextarea/TaskTextarea';
 import TaskDate from '../TaskDate/TaskDate';
+import SaveButton from '../SaveButton/SaveButton';
+import CancelButton from '../CancelButton/CancelButton';
 
 const AddNewTask: React.FC = () => {
   const [text, setText] = useState('');
@@ -19,6 +21,14 @@ const AddNewTask: React.FC = () => {
 
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
+  };
+
+  const handleCancel = () => {
+    console.log('Task creation canceled');
+  };
+
+  const handleSave = () => {
+    console.log('Task saved');
   };
 
   return (
@@ -45,12 +55,8 @@ const AddNewTask: React.FC = () => {
           </div>
 
           <div className="card__status-btns">
-            <button className="card__save" type="submit">
-              save
-            </button>
-            <button className="card__delete" type="button">
-              cancel
-            </button>
+            <SaveButton onSave={handleSave} />
+            <CancelButton onCancel={handleCancel} />
           </div>
         </div>
       </form>
