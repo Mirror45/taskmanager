@@ -1,0 +1,61 @@
+.colorsInner {
+  display: block;
+}
+
+.colorsInner {
+  order: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.colorsTitle {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.colorsWrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.color {
+  display: flex;
+  width: 15px;
+  height: 15px;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.color:hover {
+  opacity: 0.7;
+}
+
+.colorBlack {
+  background-color: #0a0a0a;
+}
+
+.colorYellow {
+  background-color: #ffe125;
+}
+
+.colorBlue {
+  background-color: #0c5cdd;
+}
+
+.colorGreen {
+  background-color: #31b55c;
+}
+
+.colorPink {
+  background-color: #ff3cb9;
+}
+
+.colorInput:checked + .color {
+  box-shadow:
+    0 0 0 4px #ffffff,
+    0 0 0 6px currentColor;
+}
