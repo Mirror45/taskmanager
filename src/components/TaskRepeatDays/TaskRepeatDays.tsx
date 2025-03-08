@@ -1,30 +1,30 @@
-import React from 'react';
-
-interface TaskRepeatDaysProps {
-  selectedDays: string[];
-  // eslint-disable-next-line no-unused-vars
-  onDayChange: (day: string) => void;
-}
+import React, { useCallback } from 'react';
+import styles from './TaskRepeatDays.module.css';
+import { TaskRepeatDaysProps } from '../../types/task-repeat-days-props';
+import { WEEKDAYS } from '../../constants';
 
 const TaskRepeatDays: React.FC<TaskRepeatDaysProps> = ({ selectedDays, onDayChange }) => {
+  const handleChange = useCallback((day: string) => () => onDayChange(day), [onDayChange]);
+
   return (
-    <fieldset className="card__repeat-days">
-      <div className="card__repeat-days-inner">
-        {['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'].map((day) => (
-          <React.Fragment key={day}>
+    <fieldset className={styles.repeatDays} aria-label="Select repeat days">
+      <div className={styles.repeatDaysInner}>
+        {WEEKDAYS.map((day) => (
+          <>
             <input
-              className="visually-hidden card__repeat-day-input"
+              key={day}
+              className={`visually-hidden ${styles.repeatDayInput}`}
               type="checkbox"
               id={`repeat-${day}`}
               name="repeat"
               value={day}
               checked={selectedDays.includes(day)}
-              onChange={() => onDayChange(day)}
+              onChange={handleChange(day)}
             />
-            <label className="card__repeat-day" htmlFor={`repeat-${day}`}>
+            <label className={styles.repeatDay} htmlFor={`repeat-${day}`}>
               {day}
             </label>
-          </React.Fragment>
+          </>
         ))}
       </div>
     </fieldset>
