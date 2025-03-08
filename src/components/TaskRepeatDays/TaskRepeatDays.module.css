@@ -1,0 +1,38 @@
+.repeatDays {
+  border: 0;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.repeatDays:disabled {
+  display: none;
+}
+
+.repeatDaysInner {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.repeatDay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  border: 1px solid #e3dede;
+  color: #e3dede;
+  cursor: pointer;
+}
+
+.repeatDay:hover {
+  background-color: rgba(227, 222, 222, 0.2);
+}
+
+.repeatDayInput:checked + .repeatDay {
+  color: #000000;
+  border-color: #000000;
+}
