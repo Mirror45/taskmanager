@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
 
 const AddNewTask: React.FC = () => {
+  const [selectedColor, setSelectedColor] = useState('black');
+
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+  };
+
   return (
     <article className="card card--edit card--black">
       <form className="card__form">
@@ -66,29 +73,7 @@ const AddNewTask: React.FC = () => {
               </div>
             </div>
 
-            <div className="card__colors-inner">
-              <h3 className="card__colors-title">Color</h3>
-              <div className="card__colors-wrap">
-                {['black', 'yellow', 'blue', 'green', 'pink'].map((color) => (
-                  <React.Fragment key={color}>
-                    <input
-                      type="radio"
-                      id={`color-${color}-1`}
-                      className={`card__color-input card__color-input--${color} visually-hidden`}
-                      name="color"
-                      value={color}
-                      defaultChecked={color === 'black'}
-                    />
-                    <label
-                      className={`card__color card__color--${color}`}
-                      htmlFor={`color-${color}-1`}
-                    >
-                      {color}
-                    </label>
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
+            <TaskColorPicker selectedColor={selectedColor} onColorChange={handleColorChange} />
           </div>
 
           <div className="card__status-btns">
