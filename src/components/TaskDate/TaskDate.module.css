@@ -1,0 +1,64 @@
+.dateDeadlineToggle {
+  display: none;
+}
+
+.dateDeadlineToggle {
+  display: flex;
+  width: auto;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  background-color: transparent;
+}
+
+.dateDeadlineToggle:hover {
+  opacity: 0.5;
+}
+
+.dateDeadline {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.dateDeadline:disabled {
+  display: none;
+}
+
+.inputDeadlineWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.date {
+  margin-top: auto;
+  font-size: 11px;
+  font-weight: 500;
+  width: 100px;
+  outline: none;
+  border: 0;
+  text-transform: uppercase;
+}
+
+.date {
+  font-size: 11px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000000;
+}
+
+.date:hover {
+  opacity: 0.5;
+}

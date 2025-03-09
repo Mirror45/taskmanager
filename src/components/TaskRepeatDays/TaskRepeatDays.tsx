@@ -7,27 +7,33 @@ const TaskRepeatDays: React.FC<TaskRepeatDaysProps> = ({ selectedDays, onDayChan
   const handleChange = useCallback((day: string) => () => onDayChange(day), [onDayChange]);
 
   return (
-    <fieldset className={styles.repeatDays} aria-label="Select repeat days">
-      <div className={styles.repeatDaysInner}>
-        {WEEKDAYS.map((day) => (
-          <>
-            <input
-              key={day}
-              className={`visually-hidden ${styles.repeatDayInput}`}
-              type="checkbox"
-              id={`repeat-${day}`}
-              name="repeat"
-              value={day}
-              checked={selectedDays.includes(day)}
-              onChange={handleChange(day)}
-            />
-            <label className={styles.repeatDay} htmlFor={`repeat-${day}`}>
-              {day}
-            </label>
-          </>
-        ))}
-      </div>
-    </fieldset>
+    <>
+      <button className={styles.repeatToggle} type="button">
+        repeat: <span className={styles.repeatStatus}>yes</span>
+      </button>
+
+      <fieldset className={styles.repeatDays} aria-label="Select repeat days">
+        <div className={styles.repeatDaysInner}>
+          {WEEKDAYS.map((day) => (
+            <>
+              <input
+                key={day}
+                className={`visually-hidden ${styles.repeatDayInput}`}
+                type="checkbox"
+                id={`repeat-${day}`}
+                name="repeat"
+                value={day}
+                checked={selectedDays.includes(day)}
+                onChange={handleChange(day)}
+              />
+              <label className={styles.repeatDay} htmlFor={`repeat-${day}`}>
+                {day}
+              </label>
+            </>
+          ))}
+        </div>
+      </fieldset>
+    </>
   );
 };
 
