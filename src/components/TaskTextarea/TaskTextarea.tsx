@@ -1,17 +1,13 @@
 import React from 'react';
-
-interface TaskTextareaProps {
-  value: string;
-  // eslint-disable-next-line no-unused-vars
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-}
+import styles from './TaskTextarea.module.css';
+import { TaskTextareaProps } from '../../types/task-textarea-props';
 
 const TaskTextarea: React.FC<TaskTextareaProps> = ({ value, onChange }) => {
   return (
-    <div className="card__textarea-wrap">
+    <div className={styles.textareaWrap}>
       <label aria-label="task-text">
         <textarea
-          className="card__text"
+          className={styles.text}
           placeholder="Start typing your text here..."
           name="text"
           id="task-text"
