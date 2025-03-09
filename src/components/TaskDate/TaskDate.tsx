@@ -1,16 +1,17 @@
 import React from 'react';
+import styles from './TaskDate.module.css';
 
 const TaskDate: React.FC = () => {
   return (
     <>
-      <button className="card__date-deadline-toggle" type="button">
-        date: <span className="card__date-status">yes</span>
+      <button className={styles.dateDeadlineToggle} type="button">
+        date: <span className={styles.dateStatus}>yes</span>
       </button>
 
-      <fieldset className="card__date-deadline">
-        <label className="card__input-deadline-wrap" aria-label="Deadline date">
+      <fieldset className={styles.dateDeadline}>
+        <label className={styles.inputDeadlineWrap} aria-label="Deadline date">
           <input
-            className="card__date"
+            className={styles.date}
             type="text"
             placeholder=""
             name="date"
@@ -18,10 +19,6 @@ const TaskDate: React.FC = () => {
           />
         </label>
       </fieldset>
-
-      <button className="card__repeat-toggle" type="button">
-        repeat: <span className="card__repeat-status">no</span>
-      </button>
     </>
   );
 };
