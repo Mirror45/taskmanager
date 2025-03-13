@@ -1,12 +1,10 @@
 import React from 'react';
-
-interface SaveButtonProps {
-  onSave: () => void;
-}
+import styles from './SaveButton.module.css';
+import { SaveButtonProps } from '../../types/save-button-props';
 
 const SaveButton: React.FC<SaveButtonProps> = ({ onSave }) => {
   return (
-    <button className="card__save" type="submit" aria-label="Save task" onClick={onSave}>
+    <button className={styles.saveButton} type="submit" aria-label="Save task" onClick={onSave}>
       save
     </button>
   );
