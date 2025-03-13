@@ -9,7 +9,7 @@ const TaskColorPicker: React.FC<TaskColorPickerProps> = ({ selectedColor, onColo
       <h3 className={styles.colorsTitle}>Color</h3>
       <div className={styles.colorsWrap}>
         {COLORS.map((color) => (
-          <>
+          <React.Fragment key={color}>
             <input
               key={color}
               type="radio"
@@ -27,7 +27,7 @@ const TaskColorPicker: React.FC<TaskColorPickerProps> = ({ selectedColor, onColo
             >
               {color}
             </label>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

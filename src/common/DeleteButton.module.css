@@ -1,19 +1,18 @@
 .deleteButton {
-    display: flex;
-    width: 100%;
-    border: 1px solid red;
-    padding: 5px 0;
-    margin: 5px 0 0;
-    background-color: transparent;
-    justify-content: center;
-    color: red;
-    text-transform: uppercase;
-    font-size: 10px;
-    cursor: pointer;
-  }
-  
-  .deleteButton:hover {
-    opacity: 0.6;
-    background-color: rgba(255, 0, 0, 0.1);
-  }
-  
+  display: flex;
+  width: 100%;
+  border: 1px solid red;
+  padding: 5px 0;
+  margin: 5px 0 0;
+  background-color: transparent;
+  justify-content: center;
+  color: red;
+  text-transform: uppercase;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  opacity: 0.6;
+  background-color: rgba(255, 0, 0, 0.1);
+}
