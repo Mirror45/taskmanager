@@ -1,0 +1,16 @@
+.saveButton {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border: 1px solid #000000;
+    font-size: 14px;
+    padding: 5px 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  .saveButton:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  

@@ -1,12 +1,15 @@
 import React from 'react';
-
-interface DeleteButtonProps {
-  onDelete: () => void;
-}
+import styles from '../../common/DeleteButton.module.css';
+import { DeleteButtonProps } from '../../types/delete-button-props';
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({ onDelete }) => {
   return (
-    <button className="card__delete" type="button" aria-label="Delete task" onClick={onDelete}>
+    <button
+      className={styles.deleteButton}
+      type="button"
+      aria-label="Delete task"
+      onClick={onDelete}
+    >
       delete
     </button>
   );
