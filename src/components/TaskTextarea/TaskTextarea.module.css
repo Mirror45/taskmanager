@@ -24,3 +24,15 @@
 .text::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
+
+.text.error {
+  border-color: red;  /* Изменяем цвет границы на красный */
+  background-color: rgba(255, 0, 0, 0.1);  /* Светлый красный фон для ошибки */
+}
+
+.errorMessage {
+  color: red;  /* Красный цвет для текста ошибки */
+  font-size: 12px;  /* Уменьшаем размер шрифта */
+  margin-top: 5px;  /* Добавляем отступ сверху */
+  font-weight: 400;  /* Немного ослабляем жирность шрифта */
+}
