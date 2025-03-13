@@ -15,9 +15,8 @@ const TaskRepeatDays: React.FC<TaskRepeatDaysProps> = ({ selectedDays, onDayChan
       <fieldset className={styles.repeatDays} aria-label="Select repeat days">
         <div className={styles.repeatDaysInner}>
           {WEEKDAYS.map((day) => (
-            <>
+            <React.Fragment key={day}>
               <input
-                key={day}
                 className={`visually-hidden ${styles.repeatDayInput}`}
                 type="checkbox"
                 id={`repeat-${day}`}
@@ -29,7 +28,7 @@ const TaskRepeatDays: React.FC<TaskRepeatDaysProps> = ({ selectedDays, onDayChan
               <label className={styles.repeatDay} htmlFor={`repeat-${day}`}>
                 {day}
               </label>
-            </>
+            </React.Fragment>
           ))}
         </div>
       </fieldset>
