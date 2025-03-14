@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './TaskCard.module.css';
+import colorBarStyles from '../TaskColorBar/TaskColorBar.module.css';
 import { TaskCardProps } from '../../types/task-card-props';
 import { useAppDispatch } from '../../store/hooks';
 import { toggleArchiveTask, toggleFavoriteTask } from '../../store/thunks/task-thunks';
@@ -19,6 +20,8 @@ const Task: React.FC<TaskCardProps> = ({ task }) => {
   const currentDate = new Date();
   const isOverdue = dueDate < currentDate;
 
+  const isRecurring = Object.values(task.repeating_days).some(Boolean);
+  const wavyClass = isRecurring ? colorBarStyles.wavy : '';
   const colorClass = styles[task.color] || '';
   const deadlineClass = isOverdue ? styles.deadline : '';
   const cardColorBarClass = isOverdue ? styles.cardDeadline : '';
@@ -54,11 +57,9 @@ const Task: React.FC<TaskCardProps> = ({ task }) => {
             </button>
           </div>
 
-          <div className={`${styles.cardColorBar} ${colorClass} ${deadlineClass}`}>
-            <svg className="card__color-bar-wave" width="100%" height="10">
-              <use xlinkHref="#wave"></use>
-            </svg>
-          </div>
+          <div
+            className={`${styles.cardColorBar} ${colorClass} ${deadlineClass} ${wavyClass}`}
+          ></div>
 
           <div className={styles.textareaWrap}>
             <p className={styles.text}>{task.description}</p>

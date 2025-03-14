@@ -6,11 +6,12 @@ import TaskDate from '../TaskDate/TaskDate';
 import SaveButton from '../SaveButton/SaveButton';
 import CancelButton from '../CancelButton/CancelButton';
 import styles from '../../common/TaskForm.module.css';
+import TaskColorBar from '../TaskColorBar/TaskColorBar';
 
 const AddNewTask: React.FC = () => {
   const [text, setText] = useState('');
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
-  const [selectedColor, setSelectedColor] = useState('blue');
+  const [selectedColor, setSelectedColor] = useState('black');
   const [taskDate, setTaskDate] = useState<string>('');
   const [isRecurring, setIsRecurring] = useState(false);
 
@@ -42,11 +43,7 @@ const AddNewTask: React.FC = () => {
     <article className={styles.card}>
       <form className="card__form">
         <div className={styles.inner}>
-          <div
-            className={`${styles.colorBar} ${isRecurring ? styles.wavy : ''}
-          ${styles[`colorBar${selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}`]}
-          `}
-          ></div>
+          <TaskColorBar isRecurring={isRecurring} selectedColor={selectedColor} />
 
           <TaskTextarea value={text} onChange={handleTextChange} />
 
