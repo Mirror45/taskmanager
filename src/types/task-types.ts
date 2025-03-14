@@ -9,6 +9,7 @@ export type RepeatingDays = {
 };
 
 export type TaskType = {
+  isRepeat: any;
   id: string;
   color: string;
   description: string;

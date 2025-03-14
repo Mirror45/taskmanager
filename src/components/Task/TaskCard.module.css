@@ -110,31 +110,6 @@
   background-color: transparent;
 }
 
-/* Color for the wavy line */
-.blackWave {
-  stroke: #000000;
-}
-
-.yellowWave {
-  stroke: #ffe125;
-}
-
-.blueWave {
-  stroke: #0c5cdd;
-}
-
-.greenWave {
-  stroke: #31b55c;
-}
-
-.pinkWave {
-  stroke: #ff3cb9;
-}
-
-.deadlineWave {
-  stroke: #f11a1a;
-}
-
 .textareaWrap {
   position: relative;
 }
