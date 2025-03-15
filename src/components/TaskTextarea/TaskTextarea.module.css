@@ -26,13 +26,13 @@
 }
 
 .text.error {
-  border-color: red;  /* Изменяем цвет границы на красный */
-  background-color: rgba(255, 0, 0, 0.1);  /* Светлый красный фон для ошибки */
+  border-color: red;
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .errorMessage {
-  color: red;  /* Красный цвет для текста ошибки */
-  font-size: 12px;  /* Уменьшаем размер шрифта */
-  margin-top: 5px;  /* Добавляем отступ сверху */
-  font-weight: 400;  /* Немного ослабляем жирность шрифта */
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  font-weight: 400;
 }

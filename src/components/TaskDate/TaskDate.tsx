@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './TaskDate.module.css';
+import Flatpickr from 'react-flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 import { TaskDateProps } from '../../types/task-date-props';
 
 const TaskDate: React.FC<TaskDateProps> = ({
@@ -16,16 +18,24 @@ const TaskDate: React.FC<TaskDateProps> = ({
 
       {isRecurring && (
         <fieldset className={styles.dateDeadline}>
-          <label className={styles.inputDeadlineWrap} aria-label="Deadline date">
-            <input
-              className={styles.date}
-              type="text"
-              placeholder="Select date"
-              name="date"
-              value={value}
-              onChange={(e) => onChange(e.target.value)}
-            />
+          <label className={styles.inputDeadlineWrap} htmlFor="task-date">
+            <span className="visually-hidden">Deadline date</span>
           </label>
+          <Flatpickr
+            id="task-date"
+            className={styles.date}
+            placeholder="Select date"
+            value={value}
+            options={{
+              dateFormat: 'd F',
+              allowInput: true,
+            }}
+            onChange={(dates: Date[]) => {
+              if (dates[0]) {
+                onChange(dates[0].toISOString());
+              }
+            }}
+          />
         </fieldset>
       )}
     </>
