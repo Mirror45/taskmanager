@@ -14,6 +14,7 @@ const AddNewTask: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('black');
   const [taskDate, setTaskDate] = useState<string>('');
   const [isRecurring, setIsRecurring] = useState(false);
+  const [isRepeatVisible, setIsRepeatVisible] = useState(selectedDays.length > 0);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value);
 
@@ -39,11 +40,13 @@ const AddNewTask: React.FC = () => {
     console.log('Task saved');
   };
 
+  const toggleRepeatVisibility = () => setIsRepeatVisible((prev) => !prev);
+
   return (
     <article className={styles.card}>
       <form className="card__form">
         <div className={styles.inner}>
-          <TaskColorBar isRecurring={isRecurring} selectedColor={selectedColor} />
+          <TaskColorBar isRecurring={isRepeatVisible} selectedColor={selectedColor} />
 
           <TaskTextarea value={text} onChange={handleTextChange} />
 
@@ -57,7 +60,12 @@ const AddNewTask: React.FC = () => {
                   onRepeatToggle={handleRepeatToggle}
                 />
                 {isRecurring && (
-                  <TaskRepeatDays selectedDays={selectedDays} onDayChange={handleDayChange} />
+                  <TaskRepeatDays
+                    selectedDays={selectedDays}
+                    onDayChange={handleDayChange}
+                    isRepeatVisible={isRepeatVisible}
+                    onToggleRepeat={toggleRepeatVisibility}
+                  />
                 )}
               </div>
             </div>
