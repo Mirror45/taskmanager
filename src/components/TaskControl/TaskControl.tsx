@@ -1,7 +1,15 @@
 import React from 'react';
+import { useAppDispatch } from '../../store/hooks';
+import { toggleAddTaskForm } from '../../store/slices/taskFormSlice';
 import styles from './TaskControl.module.css';
 
 const TaskControl: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const handleAddNewTaskClick = () => {
+    dispatch(toggleAddTaskForm());
+  };
+
   return (
     <section className={`${styles.mainControl} ${styles.control}`}>
       <h1 className={styles.controlTitle}>TASKMANAGER</h1>
@@ -11,6 +19,7 @@ const TaskControl: React.FC = () => {
           name="control"
           id="controlNewTask"
           className={`${styles.controlInput} visually-hidden`}
+          onClick={handleAddNewTaskClick}
         />
         <label
           htmlFor="controlNewTask"

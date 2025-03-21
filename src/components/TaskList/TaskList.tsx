@@ -1,4 +1,5 @@
 import React from 'react';
+import AddNewTask from '../AddNewTask/AddNewTask';
 import styles from './TaskList.module.css';
 import TaskCard from '../Task/TaskCard';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
@@ -18,6 +19,8 @@ const TaskList: React.FC = () => {
   const filteredTasks = useFilteredTasks(sortedTasks);
   const { visibleTasks, hasMoreTasks, handleLoadMore } = usePagination(filteredTasks, 8);
 
+  const isAddingTask = useAppSelector((state: RootState) => state.taskForm.isAddingTask);
+
   if (loading) return <p>Loading tasks...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!tasks.length)
@@ -25,6 +28,8 @@ const TaskList: React.FC = () => {
 
   return (
     <>
+      {isAddingTask && <AddNewTask />}
+
       <div className={styles.boardTasks}>
         {visibleTasks.map((task) => (
           <TaskCard key={task.id} task={task} />

@@ -16,7 +16,7 @@ const Task: React.FC<TaskCardProps> = ({ task }) => {
     dispatch(toggleArchiveTask(task.id));
   };
 
-  const dueDate = new Date(task.due_date);
+  const dueDate = task.due_date ? new Date(task.due_date) : new Date();
   const currentDate = new Date();
   const isOverdue = dueDate < currentDate;
 

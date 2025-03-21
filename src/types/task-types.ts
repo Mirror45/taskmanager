@@ -12,7 +12,7 @@ export type TaskType = {
   id: string;
   color: string;
   description: string;
-  due_date: string;
+  due_date: string | null;
   is_archived: boolean;
   is_favorite: boolean;
   repeating_days: RepeatingDays;
