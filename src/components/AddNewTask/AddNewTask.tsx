@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
 import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
 import TaskTextarea from '../TaskTextarea/TaskTextarea';
@@ -7,44 +7,78 @@ import SaveButton from '../SaveButton/SaveButton';
 import CancelButton from '../CancelButton/CancelButton';
 import styles from '../../common/TaskForm.module.css';
 import TaskColorBar from '../TaskColorBar/TaskColorBar';
+import { useAppDispatch } from '../../store/hooks';
+import { closeAddTaskForm } from '../../store/slices/taskFormSlice';
+import { addTask } from '../../store/thunks/task-thunks';
+import { useTaskForm } from '../../hooks/useTaskForm';
 
 const AddNewTask: React.FC = () => {
-  const [text, setText] = useState('');
-  const [selectedDays, setSelectedDays] = useState<string[]>([]);
-  const [selectedColor, setSelectedColor] = useState('black');
-  const [taskDate, setTaskDate] = useState<string>('');
-  const [isRecurring, setIsRecurring] = useState(false);
-  const [isRepeatVisible, setIsRepeatVisible] = useState(selectedDays.length > 0);
+  const dispatch = useAppDispatch();
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value);
+  const {
+    text,
+    selectedDays,
+    selectedColor,
+    taskDate,
+    setTaskDate,
+    isRecurring,
+    isRepeatVisible,
+    handleTextChange,
+    handleDayChange,
+    handleColorChange,
+    handleRepeatToggle,
+    toggleRepeatVisibility,
+  } = useTaskForm();
 
-  const handleDayChange = (day: string) => {
-    setSelectedDays((prev) =>
-      prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day],
-    );
-  };
-
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-  };
-
-  const handleRepeatToggle = () => {
-    setIsRecurring((prev) => !prev);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSave();
   };
 
   const handleCancel = () => {
-    console.log('Task creation canceled');
+    dispatch(closeAddTaskForm());
   };
 
   const handleSave = () => {
-    console.log('Task saved');
+    if (!text.trim()) return;
+
+    const newTask = {
+      id: Date.now().toString(),
+      color: selectedColor,
+      description: text,
+      due_date: isRecurring ? taskDate : null,
+      is_archived: false,
+      is_favorite: false,
+      repeating_days: isRecurring
+        ? {
+            mo: selectedDays.includes('mo'),
+            tu: selectedDays.includes('tu'),
+            we: selectedDays.includes('we'),
+            th: selectedDays.includes('th'),
+            fr: selectedDays.includes('fr'),
+            sa: selectedDays.includes('sa'),
+            su: selectedDays.includes('su'),
+          }
+        : {
+            mo: false,
+            tu: false,
+            we: false,
+            th: false,
+            fr: false,
+            sa: false,
+            su: false,
+          },
+    };
+
+    dispatch(addTask(newTask));
+    dispatch(closeAddTaskForm());
   };
 
-  const toggleRepeatVisibility = () => setIsRepeatVisible((prev) => !prev);
+  const isSaveDisabled = isRecurring ? selectedDays.length === 0 : text.trim() === '';
 
   return (
     <article className={styles.card}>
-      <form className="card__form">
+      <form onSubmit={handleSubmit}>
         <div className={styles.inner}>
           <TaskColorBar isRecurring={isRepeatVisible} selectedColor={selectedColor} />
 
@@ -74,7 +108,7 @@ const AddNewTask: React.FC = () => {
           </div>
 
           <div className={styles.statusBtns}>
-            <SaveButton onSave={handleSave} />
+            <SaveButton disabled={isSaveDisabled} />
             <CancelButton onCancel={handleCancel} />
           </div>
         </div>

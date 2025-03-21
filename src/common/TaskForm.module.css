@@ -1,7 +1,6 @@
 .card {
   position: relative;
   width: 210px;
-  min-height: 210px;
   margin-bottom: 26px;
   margin-right: 40px;
 }
@@ -32,7 +31,7 @@
 .inner {
   bottom: auto;
   z-index: 2;
-  min-height: 450px;
+  min-height: 465px;
   border: 1px solid #000000;
   padding-bottom: 15px;
 }

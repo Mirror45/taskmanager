@@ -42,7 +42,7 @@
 .controlInput:checked + .controlLabel:hover {
   opacity: 1;
   text-shadow: 1px 0 0 #000000;
-  cursor: inherit;
+  cursor: pointer;
 }
 
 .controlLabelNewTask {

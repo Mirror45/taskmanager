@@ -1,3 +1,3 @@
 export interface SaveButtonProps {
-  onSave: () => void;
+  disabled?: boolean;
 }
