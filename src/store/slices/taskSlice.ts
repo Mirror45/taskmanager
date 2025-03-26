@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialTaskState } from '../../types/task-state';
 import {
   addTask,
@@ -22,7 +22,14 @@ import {
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: initialTaskState,
-  reducers: {},
+  reducers: {
+    setEditTaskId: (state, action: PayloadAction<string | null>) => {
+      state.editTaskId = action.payload;
+    },
+    setIsAddingTask(state, action: PayloadAction<boolean>) {
+      state.isAddingTask = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Fetch tasks
@@ -55,4 +62,5 @@ const taskSlice = createSlice({
   },
 });
 
+export const { setEditTaskId, setIsAddingTask } = taskSlice.actions;
 export default taskSlice.reducer;

@@ -2,11 +2,13 @@ import React from 'react';
 import { useAppDispatch } from '../../store/hooks';
 import { toggleAddTaskForm } from '../../store/slices/taskFormSlice';
 import styles from './TaskControl.module.css';
+import { setEditTaskId } from '../../store/slices/taskSlice';
 
 const TaskControl: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleAddNewTaskClick = () => {
+    dispatch(setEditTaskId(null));
     dispatch(toggleAddTaskForm());
   };
 
