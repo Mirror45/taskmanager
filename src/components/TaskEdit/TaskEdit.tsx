@@ -1,107 +1,128 @@
 import React from 'react';
+import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
+import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
+import TaskTextarea from '../TaskTextarea/TaskTextarea';
+import TaskDate from '../TaskDate/TaskDate';
+import SaveButton from '../SaveButton/SaveButton';
+import CancelButton from '../CancelButton/CancelButton';
+import TaskColorBar from '../TaskColorBar/TaskColorBar';
+import styles from '../../common/TaskForm.module.css';
+import { useAppDispatch } from '../../store/hooks';
+import { editTask, removeTask } from '../../store/thunks/task-thunks';
+import { useTaskForm } from '../../hooks/useTaskForm';
+import { TaskType } from '../../types/task-types';
+import { useEscape } from '../../hooks/useEscape';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
-const TaskEdit: React.FC = () => {
+interface EditTaskProps {
+  task: TaskType;
+  onCancel: () => void;
+}
+
+const EditTask: React.FC<EditTaskProps> = ({ task, onCancel }) => {
+  const dispatch = useAppDispatch();
+
+  const {
+    text,
+    selectedDays,
+    selectedColor,
+    taskDate,
+    setTaskDate,
+    isRecurring,
+    isRepeatVisible,
+    handleTextChange,
+    handleDayChange,
+    handleColorChange,
+    handleRepeatToggle,
+    toggleRepeatVisibility,
+  } = useTaskForm(task);
+
+  useEscape(onCancel);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSave();
+  };
+
+  const handleSave = () => {
+    if (!text.trim()) return;
+
+    const updatedTask: TaskType = {
+      ...task,
+      color: selectedColor,
+      description: text,
+      due_date: isRecurring ? taskDate : null,
+      repeating_days: isRecurring
+        ? {
+            mo: selectedDays.includes('mo'),
+            tu: selectedDays.includes('tu'),
+            we: selectedDays.includes('we'),
+            th: selectedDays.includes('th'),
+            fr: selectedDays.includes('fr'),
+            sa: selectedDays.includes('sa'),
+            su: selectedDays.includes('su'),
+          }
+        : {
+            mo: false,
+            tu: false,
+            we: false,
+            th: false,
+            fr: false,
+            sa: false,
+            su: false,
+          },
+    };
+
+    dispatch(editTask({ id: task.id, updatedTask }));
+    onCancel();
+  };
+
+  const handleDelete = () => {
+    dispatch(removeTask(task.id))
+      .unwrap()
+      .then(() => {
+        onCancel();
+      })
+      .catch((error) => {
+        console.error('Failed to delete task:', error);
+      });
+  };
+
   return (
-    <article className="card card--edit card--yellow card--repeat">
-      <form className="card__form" method="get">
-        <div className="card__inner">
-          <div className="card__color-bar">
-            <svg className="card__color-bar-wave" width="100%" height="10">
-              <use xlinkHref="#wave"></use>
-            </svg>
-          </div>
+    <article className={styles.card}>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.inner}>
+          <TaskColorBar isRecurring={isRepeatVisible} selectedColor={selectedColor} />
 
-          <div className="card__textarea-wrap">
-            <label htmlFor="task-text">
-              <textarea
-                className="card__text"
-                placeholder="Start typing your text here..."
-                name="text"
-                id="task-text"
-              >
-                This is example of task edit. You can set date and choose repeating days and color.
-              </textarea>
-            </label>
-          </div>
+          <TaskTextarea value={text} onChange={handleTextChange} />
 
-          <div className="card__settings">
-            <div className="card__details">
-              <div className="card__dates">
-                <button className="card__date-deadline-toggle" type="button">
-                  date: <span className="card__date-status">yes</span>
-                </button>
-
-                <fieldset className="card__date-deadline">
-                  <label className="card__input-deadline-wrap" aria-label="Deadline date">
-                    <input
-                      className="card__date"
-                      type="text"
-                      placeholder=""
-                      name="date"
-                      id="task-date"
-                      value="23 September 16:15"
-                    />
-                  </label>
-                </fieldset>
-
-                <button className="card__repeat-toggle" type="button">
-                  repeat: <span className="card__repeat-status">yes</span>
-                </button>
-
-                <fieldset className="card__repeat-days">
-                  <div className="card__repeat-days-inner">
-                    {['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'].map((day) => (
-                      <React.Fragment key={day}>
-                        <input
-                          className="visually-hidden card__repeat-day-input"
-                          type="checkbox"
-                          id={`repeat-${day}-4`}
-                          name="repeat"
-                          value={day}
-                          defaultChecked={['tu', 'fr', 'su'].includes(day)}
-                        />
-                        <label className="card__repeat-day" htmlFor={`repeat-${day}-4`}>
-                          {day}
-                        </label>
-                      </React.Fragment>
-                    ))}
-                  </div>
-                </fieldset>
+          <div className={styles.settings}>
+            <div className={styles.details}>
+              <div className={styles.dates}>
+                <TaskDate
+                  value={taskDate}
+                  onChange={setTaskDate}
+                  isRecurring={isRecurring}
+                  onRepeatToggle={handleRepeatToggle}
+                />
+                {isRecurring && (
+                  <TaskRepeatDays
+                    selectedDays={selectedDays}
+                    onDayChange={handleDayChange}
+                    isRepeatVisible={isRepeatVisible}
+                    onToggleRepeat={toggleRepeatVisibility}
+                  />
+                )}
               </div>
             </div>
 
-            <div className="card__colors-inner">
-              <h3 className="card__colors-title">Color</h3>
-              <div className="card__colors-wrap">
-                {['black', 'yellow', 'blue', 'green', 'pink'].map((color) => (
-                  <React.Fragment key={color}>
-                    <input
-                      type="radio"
-                      id={`color-${color}-4`}
-                      className={`card__color-input card__color-input--${color} visually-hidden`}
-                      name="color"
-                      value={color}
-                      defaultChecked={color === 'yellow'}
-                    />
-                    <label
-                      className={`card__color card__color--${color}`}
-                      htmlFor={`color-${color}-4`}
-                    >
-                      {color}
-                    </label>
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
+            <TaskColorPicker selectedColor={selectedColor} onColorChange={handleColorChange} />
           </div>
 
-          <div className="card__status-btns">
-            <button className="card__save" type="submit">
-              save
-            </button>
-            <button className="card__delete" type="button">
-              delete
-            </button>
+          <div className={styles.statusBtns}>
+            <SaveButton />
+            <CancelButton onCancel={onCancel} />
+            <DeleteButton onDelete={handleDelete} />
           </div>
         </div>
       </form>
@@ -109,4 +130,4 @@ const TaskEdit: React.FC = () => {
   );
 };
 
-export default TaskEdit;
+export default EditTask;

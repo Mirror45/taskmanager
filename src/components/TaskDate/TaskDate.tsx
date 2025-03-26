@@ -10,6 +10,8 @@ const TaskDate: React.FC<TaskDateProps> = ({
   isRecurring,
   onRepeatToggle,
 }) => {
+  const dateValue = value ? new Date(value) : new Date();
+
   return (
     <>
       <button className={styles.dateDeadlineToggle} type="button" onClick={onRepeatToggle}>
@@ -25,10 +27,11 @@ const TaskDate: React.FC<TaskDateProps> = ({
             id="task-date"
             className={styles.date}
             placeholder="Select date"
-            value={value}
+            value={dateValue}
             options={{
-              dateFormat: 'd F',
+              dateFormat: 'd F Y',
               allowInput: true,
+              locale: { firstDayOfWeek: 1 },
             }}
             onChange={(dates: Date[]) => {
               if (dates[0]) {

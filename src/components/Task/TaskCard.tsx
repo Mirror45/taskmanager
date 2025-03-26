@@ -5,7 +5,7 @@ import { TaskCardProps } from '../../types/task-card-props';
 import { useAppDispatch } from '../../store/hooks';
 import { toggleArchiveTask, toggleFavoriteTask } from '../../store/thunks/task-thunks';
 
-const Task: React.FC<TaskCardProps> = ({ task }) => {
+const Task: React.FC<TaskCardProps> = ({ task, onEdit }) => {
   const dispatch = useAppDispatch();
 
   const handleFavoriteToggle = () => {
@@ -38,7 +38,11 @@ const Task: React.FC<TaskCardProps> = ({ task }) => {
       <div className="card__form">
         <div className={styles.cardInner}>
           <div className={styles.cardControl}>
-            <button type="button" className={`${styles.cardBtn} ${styles.cardBtnEdit}`}>
+            <button
+              type="button"
+              className={`${styles.cardBtn} ${styles.cardBtnEdit}`}
+              onClick={onEdit}
+            >
               edit
             </button>
             <button

@@ -11,6 +11,10 @@ import { useAppDispatch } from '../../store/hooks';
 import { closeAddTaskForm } from '../../store/slices/taskFormSlice';
 import { addTask } from '../../store/thunks/task-thunks';
 import { useTaskForm } from '../../hooks/useTaskForm';
+import { useEscape } from '../../hooks/useEscape';
+import { setFilter } from '../../store/slices/filtersSlice';
+import { resetSortOrder } from '../../store/slices/sortSlice';
+import { FilterType } from '../../types/filter';
 
 const AddNewTask: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +42,8 @@ const AddNewTask: React.FC = () => {
   const handleCancel = () => {
     dispatch(closeAddTaskForm());
   };
+
+  useEscape(handleCancel);
 
   const handleSave = () => {
     if (!text.trim()) return;
@@ -69,6 +75,9 @@ const AddNewTask: React.FC = () => {
             su: false,
           },
     };
+
+    dispatch(setFilter(FilterType.All));
+    dispatch(resetSortOrder());
 
     dispatch(addTask(newTask));
     dispatch(closeAddTaskForm());
