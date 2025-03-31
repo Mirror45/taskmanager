@@ -3,6 +3,7 @@ import taskReducer from './slices/taskSlice';
 import filtersReducer from './slices/filtersSlice';
 import sortReducer from './slices/sortSlice';
 import taskFormReducer from './slices/taskFormSlice';
+import statisticsReducer from './slices/statisticsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     filter: filtersReducer,
     sort: sortReducer,
     taskForm: taskFormReducer,
+    statistics: statisticsReducer,
   },
 });
 
