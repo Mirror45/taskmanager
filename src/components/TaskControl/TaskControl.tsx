@@ -1,11 +1,14 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../store/hooks';
 import { toggleAddTaskForm } from '../../store/slices/taskFormSlice';
-import styles from './TaskControl.module.css';
 import { setEditTaskId } from '../../store/slices/taskSlice';
+import styles from './TaskControl.module.css';
 
 const TaskControl: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleAddNewTaskClick = () => {
     dispatch(setEditTaskId(null));
@@ -35,6 +38,8 @@ const TaskControl: React.FC = () => {
           name="control"
           id="controlTask"
           className={`${styles.controlInput} visually-hidden`}
+          checked={location.pathname === '/tasks'}
+          onChange={() => navigate('/tasks')}
         />
         <label htmlFor="controlTask" className={styles.controlLabel}>
           TASKS
@@ -45,7 +50,8 @@ const TaskControl: React.FC = () => {
           name="control"
           id="controlStatistic"
           className={`${styles.controlInput} visually-hidden`}
-          defaultChecked
+          checked={location.pathname === '/statistics'}
+          onChange={() => navigate('/statistics')}
         />
         <label htmlFor="controlStatistic" className={styles.controlLabel}>
           STATISTICS
