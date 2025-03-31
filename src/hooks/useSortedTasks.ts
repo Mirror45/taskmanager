@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { TaskType } from '../types/task-types';
 
 const useSortedTasks = (tasks: TaskType[], sortOrder: 'default' | 'date-up' | 'date-down') => {

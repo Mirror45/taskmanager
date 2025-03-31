@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import styles from './TaskTextarea.module.css';
+
 import { TaskTextareaProps } from '../../types/task-textarea-props';
+
+import styles from './TaskTextarea.module.css';
 
 const TaskTextarea: React.FC<TaskTextareaProps> = ({ value, onChange }) => {
   const [error, setError] = useState<string>('');

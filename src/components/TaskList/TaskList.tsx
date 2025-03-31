@@ -1,17 +1,19 @@
 import React from 'react';
-import AddNewTask from '../AddNewTask/AddNewTask';
-import styles from './TaskList.module.css';
-import TaskCard from '../Task/TaskCard';
-import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
-import { RootState } from '../../store/store';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { useTasks } from '../../hooks/useTasks';
-import useSortedTasks from '../../hooks/useSortedTasks';
+
 import useFilteredTasks from '../../hooks/useFilteredTasks';
 import usePagination from '../../hooks/usePagination';
-import { setEditTaskId, setIsAddingTask } from '../../store/slices/taskSlice';
-import EditTask from '../TaskEdit/TaskEdit';
+import useSortedTasks from '../../hooks/useSortedTasks';
+import { useTasks } from '../../hooks/useTasks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { toggleAddTaskForm } from '../../store/slices/taskFormSlice';
+import { setEditTaskId, setIsAddingTask } from '../../store/slices/taskSlice';
+import { RootState } from '../../store/store';
+import AddNewTask from '../AddNewTask/AddNewTask';
+import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
+import TaskCard from '../Task/TaskCard';
+import EditTask from '../TaskEdit/TaskEdit';
+
+import styles from './TaskList.module.css';
 
 const TaskList: React.FC = () => {
   const dispatch = useAppDispatch();

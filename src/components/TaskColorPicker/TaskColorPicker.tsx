@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './TaskColorPicker.module.css';
+
 import { COLORS } from '../../constants';
 import { TaskColorPickerProps } from '../../types/task-color-picker-props';
+
+import styles from './TaskColorPicker.module.css';
 
 const TaskColorPicker: React.FC<TaskColorPickerProps> = ({ selectedColor, onColorChange }) => {
   return (

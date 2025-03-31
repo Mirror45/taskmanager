@@ -1,20 +1,21 @@
 import React from 'react';
-import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
-import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
-import TaskTextarea from '../TaskTextarea/TaskTextarea';
-import TaskDate from '../TaskDate/TaskDate';
-import SaveButton from '../SaveButton/SaveButton';
-import CancelButton from '../CancelButton/CancelButton';
+
 import styles from '../../common/TaskForm.module.css';
-import TaskColorBar from '../TaskColorBar/TaskColorBar';
-import { useAppDispatch } from '../../store/hooks';
-import { closeAddTaskForm } from '../../store/slices/taskFormSlice';
-import { addTask } from '../../store/thunks/task-thunks';
-import { useTaskForm } from '../../hooks/useTaskForm';
 import { useEscape } from '../../hooks/useEscape';
+import { useTaskForm } from '../../hooks/useTaskForm';
+import { useAppDispatch } from '../../store/hooks';
 import { setFilter } from '../../store/slices/filtersSlice';
 import { resetSortOrder } from '../../store/slices/sortSlice';
+import { closeAddTaskForm } from '../../store/slices/taskFormSlice';
+import { addTask } from '../../store/thunks/task-thunks';
 import { FilterType } from '../../types/filter';
+import CancelButton from '../CancelButton/CancelButton';
+import SaveButton from '../SaveButton/SaveButton';
+import TaskColorBar from '../TaskColorBar/TaskColorBar';
+import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
+import TaskDate from '../TaskDate/TaskDate';
+import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
+import TaskTextarea from '../TaskTextarea/TaskTextarea';
 
 const AddNewTask: React.FC = () => {
   const dispatch = useAppDispatch();

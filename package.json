@@ -28,8 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "server": "json-server --watch db.json --port 5000",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
+    "lint:fix": "npm run lint && npm run format",
     "prepare": "husky install",
     "eject": "react-scripts eject"
   },
@@ -73,7 +74,8 @@
     "husky": "^8.0.0",
     "json-server": "^1.0.0-beta.3",
     "lint-staged": "^15.4.3",
-    "prettier": "^3.5.1"
+    "prettier": "^3.5.1",
+    "prettier-plugin-organize-imports": "^4.1.0"
   },
   "husky": {
     "hooks": {

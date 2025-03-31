@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { SortState } from '../../types/sort';
 
 const initialState: SortState = {

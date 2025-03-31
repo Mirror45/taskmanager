@@ -1,24 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
 import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
   ArcElement,
   BarElement,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
+  Title,
+  Tooltip,
 } from 'chart.js';
-import { Line, Doughnut } from 'react-chartjs-2';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import { RootState } from '../../store/store';
-import { setPeriod } from '../../store/slices/statisticsSlice';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchStatistics } from '../../store/thunks/statistics-thunks';
+import React, { useEffect, useRef, useState } from 'react';
+import { Doughnut, Line } from 'react-chartjs-2';
+
 import { COLORS, COLOR_CODES } from '../../constants'; // Импортируем константы с цветами
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setPeriod } from '../../store/slices/statisticsSlice';
+import { RootState } from '../../store/store';
+import { fetchStatistics } from '../../store/thunks/statistics-thunks';
 
 ChartJS.register(
   Title,

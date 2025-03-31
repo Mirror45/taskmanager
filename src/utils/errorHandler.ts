@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios';
+
 import { ApiError } from '../types/api-error';
 
 export const handleError = (error: unknown): ApiError => {

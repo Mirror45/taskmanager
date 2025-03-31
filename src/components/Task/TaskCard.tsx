@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from './TaskCard.module.css';
-import colorBarStyles from '../TaskColorBar/TaskColorBar.module.css';
-import { TaskCardProps } from '../../types/task-card-props';
+
 import { useAppDispatch } from '../../store/hooks';
 import { toggleArchiveTask, toggleFavoriteTask } from '../../store/thunks/task-thunks';
+import { TaskCardProps } from '../../types/task-card-props';
+import colorBarStyles from '../TaskColorBar/TaskColorBar.module.css';
+
+import styles from './TaskCard.module.css';
 
 const Task: React.FC<TaskCardProps> = ({ task, onEdit }) => {
   const dispatch = useAppDispatch();

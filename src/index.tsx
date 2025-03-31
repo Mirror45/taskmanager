@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
-import App from './components/App/App';
-import './styles/global.css';
 import { BrowserRouter } from 'react-router-dom';
+
+import App from './components/App/App';
+import { store } from './store/store';
+import './styles/global.css';
 
 const rootElement = document.getElementById('root');
 

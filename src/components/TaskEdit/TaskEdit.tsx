@@ -1,18 +1,19 @@
 import React from 'react';
-import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
-import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
-import TaskTextarea from '../TaskTextarea/TaskTextarea';
-import TaskDate from '../TaskDate/TaskDate';
-import SaveButton from '../SaveButton/SaveButton';
-import CancelButton from '../CancelButton/CancelButton';
-import TaskColorBar from '../TaskColorBar/TaskColorBar';
+
 import styles from '../../common/TaskForm.module.css';
+import { useEscape } from '../../hooks/useEscape';
+import { useTaskForm } from '../../hooks/useTaskForm';
 import { useAppDispatch } from '../../store/hooks';
 import { editTask, removeTask } from '../../store/thunks/task-thunks';
-import { useTaskForm } from '../../hooks/useTaskForm';
 import { TaskType } from '../../types/task-types';
-import { useEscape } from '../../hooks/useEscape';
+import CancelButton from '../CancelButton/CancelButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import SaveButton from '../SaveButton/SaveButton';
+import TaskColorBar from '../TaskColorBar/TaskColorBar';
+import TaskColorPicker from '../TaskColorPicker/TaskColorPicker';
+import TaskDate from '../TaskDate/TaskDate';
+import TaskRepeatDays from '../TaskRepeatDays/TaskRepeatDays';
+import TaskTextarea from '../TaskTextarea/TaskTextarea';
 
 interface EditTaskProps {
   task: TaskType;

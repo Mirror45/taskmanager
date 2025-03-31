@@ -1,6 +1,6 @@
 import { TaskType } from '../types/task-types';
-import { handleError } from '../utils/errorHandler';
 import axiosInstance from '../utils/axiosInstance';
+import { handleError } from '../utils/errorHandler';
 
 export const getTasks = async (): Promise<TaskType[]> => {
   try {

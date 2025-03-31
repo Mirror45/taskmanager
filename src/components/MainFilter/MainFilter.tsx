@@ -1,8 +1,10 @@
 import React from 'react';
+
+import { useTaskCounts } from '../../hooks/useTaskCounts';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setFilter } from '../../store/slices/filtersSlice';
 import { FilterType } from '../../types/filter';
-import { useTaskCounts } from '../../hooks/useTaskCounts';
+
 import styles from './MainFilter.module.css';
 
 const filters = [

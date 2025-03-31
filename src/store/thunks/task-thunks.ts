@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { createTask, deleteTask, getTasks, updateTask } from '../../api/api';
 import { TaskType } from '../../types/task-types';
-import { getTasks, createTask, updateTask, deleteTask } from '../../api/api';
 import { RootState } from '../store';
 
 export const fetchTasks = createAsyncThunk<TaskType[], void, { rejectValue: string }>(

@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './SaveButton.module.css';
+
 import { SaveButtonProps } from '../../types/save-button-props';
+
+import styles from './SaveButton.module.css';
 
 const SaveButton: React.FC<SaveButtonProps> = ({ disabled }) => {
   return (

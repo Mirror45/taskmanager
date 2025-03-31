@@ -1,5 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { initialTaskState } from '../../types/task-state';
+import {
+  handleAddFulfilled,
+  handleEditFulfilled,
+  handleFetchFulfilled,
+  handlePending,
+  handleRejected,
+  handleRemoveFulfilled,
+  handleToggleArchiveFulfilled,
+  handleToggleFavoriteFulfilled,
+} from '../stateHandlers/taskHandlers';
 import {
   addTask,
   editTask,
@@ -8,16 +19,6 @@ import {
   toggleArchiveTask,
   toggleFavoriteTask,
 } from '../thunks/task-thunks';
-import {
-  handlePending,
-  handleRejected,
-  handleFetchFulfilled,
-  handleAddFulfilled,
-  handleEditFulfilled,
-  handleRemoveFulfilled,
-  handleToggleFavoriteFulfilled,
-  handleToggleArchiveFulfilled,
-} from '../stateHandlers/taskHandlers';
 
 const taskSlice = createSlice({
   name: 'tasks',

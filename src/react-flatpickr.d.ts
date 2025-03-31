@@ -1,6 +1,6 @@
 declare module 'react-flatpickr' {
-  import { ComponentType } from 'react';
   import { Instance as FlatpickrInstance, Options } from 'flatpickr';
+  import { ComponentType } from 'react';
 
   interface FlatpickrProps {
     value?: string | Date | Date[];

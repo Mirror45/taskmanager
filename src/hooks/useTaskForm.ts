@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { TaskType } from '../types/task-types';
 
 export const useTaskForm = (task?: TaskType) => {

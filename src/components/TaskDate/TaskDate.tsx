@@ -1,8 +1,10 @@
-import React from 'react';
-import styles from './TaskDate.module.css';
-import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import React from 'react';
+import Flatpickr from 'react-flatpickr';
+
 import { TaskDateProps } from '../../types/task-date-props';
+
+import styles from './TaskDate.module.css';
 
 const TaskDate: React.FC<TaskDateProps> = ({
   value = '',

@@ -1,7 +1,9 @@
 import React, { useCallback } from 'react';
-import styles from './TaskRepeatDays.module.css';
-import { TaskRepeatDaysProps } from '../../types/task-repeat-days-props';
+
 import { WEEKDAYS } from '../../constants';
+import { TaskRepeatDaysProps } from '../../types/task-repeat-days-props';
+
+import styles from './TaskRepeatDays.module.css';
 
 const TaskRepeatDays: React.FC<TaskRepeatDaysProps> = ({
   selectedDays,

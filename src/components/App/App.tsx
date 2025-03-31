@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './App.module.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import MainFilter from '../MainFilter/MainFilter';
 import Statistics from '../Statistics/Statistics';
 import TaskBoard from '../TaskBoard/TaskBoard';
 import TaskControl from '../TaskControl/TaskControl';
-import { Navigate, Route, Routes } from 'react-router-dom';
+
+import styles from './App.module.css';
 
 const App: React.FC = () => {
   return (

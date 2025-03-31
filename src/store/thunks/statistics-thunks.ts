@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import axiosInstance from '../../utils/axiosInstance';
 import { setStatisticsData } from '../slices/statisticsSlice';
 import { RootState } from '../store';
-import axiosInstance from '../../utils/axiosInstance';
 
 interface Task {
   id: string;

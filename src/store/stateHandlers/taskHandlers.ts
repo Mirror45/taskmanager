@@ -1,6 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { TaskType } from '../../types/task-types';
+
 import { initialTaskState } from '../../types/task-state';
+import { TaskType } from '../../types/task-types';
 
 export const handlePending = (state: typeof initialTaskState) => {
   state.loading = true;

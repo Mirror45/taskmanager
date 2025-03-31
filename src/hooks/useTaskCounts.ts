@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../store/store';
 import { FilterType } from '../types/filter';
 

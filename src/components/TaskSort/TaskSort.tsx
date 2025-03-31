@@ -1,9 +1,11 @@
 import React from 'react';
-import { RootState } from '../../store/store';
-import { setSortOrder } from '../../store/slices/sortSlice';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import styles from './TaskSort.module.css';
+
 import useResetSortOnFilterChange from '../../hooks/useResetSortOnFilterChange';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setSortOrder } from '../../store/slices/sortSlice';
+import { RootState } from '../../store/store';
+
+import styles from './TaskSort.module.css';
 
 const TaskSort: React.FC = () => {
   const dispatch = useAppDispatch();
