@@ -1,6 +1,6 @@
 # 📝 Task Manager
 
-A full-featured task management application built with **React**, **Redux Toolkit**, **TypeScript**, and **Vite**. This project demonstrates modern frontend architecture, state management, and component-based UI design — ideal for real-world team productivity tools.
+A full-featured task management application built with **React**, **Redux Toolkit**, **TypeScript**, and **Create React App**. This project demonstrates modern frontend architecture, state management, and component-based UI design — ideal for real-world team productivity tools.
 
 ## ⚙️ Functionality
 
