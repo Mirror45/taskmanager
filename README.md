@@ -1,46 +1,119 @@
-# Getting Started with Create React App
+# 📝 Task Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-featured task management application built with **React**, **Redux Toolkit**, **TypeScript**, and **Vite**. This project demonstrates modern frontend architecture, state management, and component-based UI design — ideal for real-world team productivity tools.
 
-## Available Scripts
+## ⚙️ Functionality
 
-In the project directory, you can run:
+### 📋 Core Features
 
-### `npm start`
+- Displaying tasks with pagination (8 per page) using `Load more`
+- Creating tasks with a form: description, date, color, repeatability
+- Editing tasks
+- Archiving and adding tasks to favorites
+- Sorting by date (ascending/descending)
+- Filters: `All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Archive`
+- Automatic updating of task counters upon any changes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 📊 Statistics
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Weekly task statistics screen
+- Line chart by day
+- Pie chart by color categories
 
-### `npm test`
+### ☁️ API Integration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Full CRUD via REST API: `GET/POST/PUT/DELETE /tasks`
+- Sync endpoint: `POST /tasks/sync`
+- Authorization via header: `Authorization: Basic <token>`
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠 Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🚀 Core Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Technology             | Purpose                                            |
+|-----------------------|----------------------------------------------------|
+| React                 | Building SPA interface                              |
+| TypeScript            | Static typing, improving code readability and reliability |
+| Redux Toolkit         | Efficient state management with minimal setup      |
+| React Router DOM v7   | Routing and navigation management between pages    |
+| Axios                 | API handling, sending HTTP requests                 |
+|CSS Modules           | Scoped CSS styles for components to avoid style conflicts |
+| React Flatpickr + Flatpickr | Convenient date picker calendar for tasks          |
+| Chart.js + react-chartjs-2 | Creating statistical activity charts              |
 
-### `npm run eject`
+### 📦 Additional Libraries and Their Roles
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Library                             | Purpose                                           |
+|-----------------------------------|--------------------------------------------------|
+| @reduxjs/toolkit                  | Simplifies store, reducers, and thunks creation  |
+| react-chartjs-2 / chart.js        | Displaying task statistics as charts              |
+| flatpickr / react-flatpickr       | Date and time picker components in UI             |
+| json-server                      | Mock server to simulate REST API                   |
+| @testing-library/react / jest-dom / user-event | Component testing and user behavior simulation    |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🧪 Quality Control Tools
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Tool                              | Purpose                                          |
+|----------------------------------|-------------------------------------------------|
+| ESLint                           | Static code analysis to prevent errors and bad practices |
+| Prettier                        | Automatic code formatting                        |
+| Commitlint + Husky + Lint-Staged | Commit message checking, running linters/formatters before commit |
+| EditorConfig                    | Unifying basic editing rules (indentation, line breaks, etc.) |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 🔐 Husky
 
-## Learn More
+Used to run Git hooks. The project has a pre-commit hook that:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Runs `eslint --fix` and `prettier --write` only on changed files.
+- Ensures badly formatted code does not get committed to the repository.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🧼 Commitlint
+
+Checks commit messages for compliance with the Conventional Commits standard (e.g., `feat:`, `fix:`, `refactor:`).
+
+### ⚙️ Configurations
+
+- **TypeScript strict mode:** enabled `strict`, `noUnusedLocals`, `noImplicitAny`, `strictNullChecks`, etc. — helps catch errors before app runs.
+- **Prettier + ESLint integration:** uses `eslint-config-prettier` to avoid conflicts between linter and formatter.
+- **Import organization:** `prettier-plugin-organize-imports` automatically sorts and structures imports.
+
+---
+
+## 📂 Project Structure (Simplified)
+
+src/
+
+├── app/ # App root & router
+
+├── components/ # Reusable UI components
+
+├── hooks/ # Custom React hooks
+
+├── store/ # Redux setup
+
+├── api/ # Axios API logic
+
+├── types/ # TypeScript interfaces and types
+
+├── styles/ # Global styles
+
+└── utils/ # Helper functions
+
+## 📦 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/Mirror45/taskmanager.git
+
+# Install dependencies
+npm install
+
+# Start the mock API server at http://localhost:5000
+npm run server
+
+# In a separate terminal, start the frontend
+npm start
+```
+> *The project uses the API at `http://localhost:5000/`.  
+> Please make sure the mock server is running for proper functionality.*
