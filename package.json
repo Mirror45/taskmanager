@@ -27,7 +27,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "server": "json-server --watch db.json --port 5000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
     "lint:fix": "npm run lint && npm run format",
@@ -72,7 +71,6 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "husky": "^8.0.0",
-    "json-server": "^1.0.0-beta.3",
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.1",
     "prettier-plugin-organize-imports": "^4.1.0"
