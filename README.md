@@ -106,14 +106,23 @@ src/
 # Clone the repository
 git clone https://github.com/Mirror45/taskmanager.git
 
-# Install dependencies
+# Install frontend dependencies (from the project root)
 npm install
 
-# Start the mock API server at http://localhost:5000
-npm run server
+# In a separate terminal, navigate to the backend folder
+cd backend
 
-# In a separate terminal, start the frontend
+# Install backend dependencies
+npm install
+
+# Start the mock API server at http://localhost:10000
+npm run server
+```
+> Open another separate terminal in the project root and start the frontend:
+
+```bash
+cd taskmanager # if you are not already in the project root
 npm start
 ```
-> *The project uses the API at `http://localhost:5000/`.  
+> *The project uses the API at `http://localhost:10000/`.  
 > Please make sure the mock server is running for proper functionality.*
