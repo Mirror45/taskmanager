@@ -39,7 +39,7 @@ const TaskList: React.FC = () => {
     dispatch(setEditTaskId(null));
   };
 
-  if (loading) return <p>Loading tasks...</p>;
+  if (loading) return <p>Loading tasks... (Please wait 1–2 minutes while the server wakes up)</p>;
   if (error) return <p>Error: {error}</p>;
   if (!tasks.length)
     return <p>Click &quot;ADD NEW TASK&quot; in menu to create your first task.</p>;
