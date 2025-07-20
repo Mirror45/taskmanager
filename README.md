@@ -1,56 +1,65 @@
-# 📝 Task Manager
+# 📝 TaskManager – Modern SPA for Task Management
 
-A full-featured task management application built with **React**, **Redux Toolkit**, **TypeScript**, and **Create React App**. This project demonstrates modern frontend architecture, state management, and component-based UI design — ideal for real-world team productivity tools.
+🚀 **Live Demo**: [taskmanager-iota-ivory.vercel.app](https://taskmanager-iota-ivory.vercel.app)
 
-## ⚙️ Functionality
+A feature-rich Single Page Application (SPA) for task management, built with React and Redux Toolkit. The project includes advanced state management logic, dynamic filtering, sorting, and data visualization.
 
-### 📋 Core Features
+# 📖 Project Overview
+TaskManager is a SPA designed to showcase proficiency in modern frontend technologies. The application simulates a personal task management service and emphasizes a clean, minimalist interface to help users stay focused.
 
-- Displaying tasks with pagination (8 per page) using `Load more`
-- Creating tasks with a form: description, date, color, repeatability
-- Editing tasks
-- Archiving and adding tasks to favorites
-- Sorting by date (ascending/descending)
-- Filters: `All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Archive`
-- Automatic updating of task counters upon any changes
+A key aspect of the project is the implementation of complex state management using Redux Toolkit, enabling a fast, interactive, and responsive user experience that updates in real time without full page reloads.
 
-### 📊 Statistics
+---
 
-- Weekly task statistics screen
-- Line chart by day
-- Pie chart by color categories
+## ✨ Key Features
 
-### ☁️ API Integration
+### 📊 Insightful Statistics & Visualization
+A dedicated "Statistics" page with interactive charts powered by Chart.js. Users can analyze their productivity over a selected period and visualize task distribution by color-coded categories.
 
-- Full CRUD via REST API: `GET/POST/PUT/DELETE /tasks`
-- Sync endpoint: `POST /tasks/sync`
-- Authorization via header: `Authorization: Basic <token>`
+### 🔍 Advanced Filtering & Sorting
+Easily search and organize tasks with a variety of filters:
 
+- All
+- Overdue
+- Today
+- Favorites
+- Repeating
+- Archive
+
+Tasks can be sorted by date (ascending/descending) or using the default order.
+
+### 🎨 Flexible Task Customization
+- Set due dates with a user-friendly calendar using `react-flatpickr`.
+- Create recurring tasks tied to specific days of the week.
+- Categorize tasks with color tags for better visual organization.
+
+### ✅ Full CRUD Task Management
+Supports the full cycle of Create, Read, Update, and Delete operations. Tasks can be edited directly in the task card — no need to navigate to a separate page.
+
+### 🔄 Отзывчивый UI и обратная связь
+The interface responds instantly to user actions. Buttons are disabled during API requests and update their text  (e.g., `"Save"` → `"Saving..."`), to keep users informed. In case of network errors, the edit form animates to draw attention.
 
 ## 🛠 Tech Stack
 
 ### 🚀 Core Stack
 
-| Technology             | Purpose                                            |
-|-----------------------|----------------------------------------------------|
-| React                 | Building SPA interface                              |
-| TypeScript            | Static typing, improving code readability and reliability |
-| Redux Toolkit         | Efficient state management with minimal setup      |
-| React Router DOM v7   | Routing and navigation management between pages    |
-| Axios                 | API handling, sending HTTP requests                 |
-|CSS Modules           | Scoped CSS styles for components to avoid style conflicts |
-| React Flatpickr + Flatpickr | Convenient date picker calendar for tasks          |
-| Chart.js + react-chartjs-2 | Creating statistical activity charts              |
+| Technology             | Purpose                                                                 |
+|------------------------|-------------------------------------------------------------------------|
+| React                  | Building a declarative, component-based, and interactive UI             |
+| TypeScript             | Static typing to improve code readability and reliability               |
+| Redux Toolkit          | Managing complex global state in a predictable and efficient way        |
+| React Router DOM v6    | Client-side routing for seamless multi-page experience in a SPA         |
+| Axios                  | Promise-based HTTP client for reliable backend API communication        |
+| CSS Modules            | Scoped CSS for components to avoid style conflicts                      |
 
 ### 📦 Additional Libraries and Their Roles
 
-| Library                             | Purpose                                           |
-|-----------------------------------|--------------------------------------------------|
-| @reduxjs/toolkit                  | Simplifies store, reducers, and thunks creation  |
-| react-chartjs-2 / chart.js        | Displaying task statistics as charts              |
-| flatpickr / react-flatpickr       | Date and time picker components in UI             |
-| json-server                      | Mock server to simulate REST API                   |
-| @testing-library/react / jest-dom / user-event | Component testing and user behavior simulation    |
+| Library                           | Purpose                                                                 |
+|----------------------------------|-------------------------------------------------------------------------|
+| react-chartjs-2 / chart.js       | React components for integrating interactive charts with Chart.js       |
+| flatpickr / react-flatpickr      | React wrapper for a lightweight and user-friendly date picker widget   |
+| Day.js                           | Lightweight utility for date formatting and manipulation                |
+| json-server                      | Mock server to simulate a REST API for development                      |
 
 ### 🧪 Quality Control Tools
 
@@ -80,26 +89,6 @@ Checks commit messages for compliance with the Conventional Commits standard (e.
 
 ---
 
-## 📂 Project Structure (Simplified)
-
-src/
-
-├── app/ # App root & router
-
-├── components/ # Reusable UI components
-
-├── hooks/ # Custom React hooks
-
-├── store/ # Redux setup
-
-├── api/ # Axios API logic
-
-├── types/ # TypeScript interfaces and types
-
-├── styles/ # Global styles
-
-└── utils/ # Helper functions
-
 ## 📦 Getting Started
 
 ```bash
@@ -126,3 +115,27 @@ npm start
 ```
 > *The project uses the API at `http://localhost:10000/`.  
 > Please make sure the mock server is running for proper functionality.*
+
+---
+
+### 🧠 Challenges & Future Improvements
+
+#### ✅ Overcome Challenges
+
+- **Managing Complex State:**  
+  One of the core tasks was designing a Redux store architecture capable of handling interconnected data: task lists, active filters, sorting parameters, and UI state (e.g., which card is in edit mode). This required careful slice design to ensure data consistency.
+
+- **Building a Dynamic Interface:**  
+  Implementing real-time feedback in the UI (updating counters in filters, button state changes, text updates) in response to user actions and API requests required precise synchronization between state and React components to avoid unnecessary re-renders and ensure smooth performance.
+
+#### 🚧 Possible Improvements
+
+- **Offline Mode Support:**  
+  Add the ability to work with tasks without internet connection, with data synchronization upon reconnection.
+
+- **Animations & Transitions:**  
+ Use libraries like `Framer Motion` to add smooth animations during task creation, deletion, and filtering to enhance UX.
+
+- **Full Authentication System:**  
+  Replace the current basic auth with a complete system including registration, login, and JWT tokens.
+
