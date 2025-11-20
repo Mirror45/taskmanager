@@ -48,7 +48,7 @@ The interface responds instantly to user actions. Buttons are disabled during AP
 | React                  | Building a declarative, component-based, and interactive UI             |
 | TypeScript             | Static typing to improve code readability and reliability               |
 | Redux Toolkit          | Managing complex global state in a predictable and efficient way        |
-| React Router DOM v6    | Client-side routing for seamless multi-page experience in a SPA         |
+| React Router DOM v7    | Client-side routing for seamless multi-page experience in a SPA         |
 | Axios                  | Promise-based HTTP client for reliable backend API communication        |
 | CSS Modules            | Scoped CSS for components to avoid style conflicts                      |
 
@@ -58,7 +58,6 @@ The interface responds instantly to user actions. Buttons are disabled during AP
 |----------------------------------|-------------------------------------------------------------------------|
 | react-chartjs-2 / chart.js       | React components for integrating interactive charts with Chart.js       |
 | flatpickr / react-flatpickr      | React wrapper for a lightweight and user-friendly date picker widget   |
-| Day.js                           | Lightweight utility for date formatting and manipulation                |
 | json-server                      | Mock server to simulate a REST API for development                      |
 
 ### 🧪 Quality Control Tools
@@ -105,7 +104,11 @@ cd backend
 npm install
 
 # Start the mock API server at http://localhost:10000
-npm run server
+# Linux/macOS:
+PORT=10000 npm start
+
+# Windows (cmd):
+# set PORT=10000 && npm start
 ```
 > Open another separate terminal in the project root and start the frontend:
 
